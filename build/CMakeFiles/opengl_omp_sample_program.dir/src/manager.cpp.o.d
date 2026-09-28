@@ -1,5 +1,5 @@
-CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o: \
- /home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp \
+CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o: \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -149,56 +149,12 @@ CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/ctime \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.h \
  /usr/include/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /usr/include/GLFW/glfw3.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/mpi_portable_platform.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/mpicxx.h \
- /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/stl_map.h \
- /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/utility \
- /usr/include/c++/13/bits/stl_relops.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/constants.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/functions.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/datatype.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/exception.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/op.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/status.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/group.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/comm.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/win.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/file.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/errhandler.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intracomm.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/topology.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intercomm.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/info.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/datatype_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/functions_inln.h \
- /usr/include/string.h /usr/include/strings.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/request_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/comm_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intracomm_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/topology_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/intercomm_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/group_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/op_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/errhandler_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/status_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/info_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/win_inln.h \
- /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/ompi/mpi/cxx/file_inln.h \
- /home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.h \
- /home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.h \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/glm.hpp \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/_fixes.hpp \
  /usr/include/c++/13/cmath /usr/include/math.h \
@@ -268,8 +224,11 @@ CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/node_handle.h \
+ /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/array \
@@ -389,4 +348,59 @@ CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o: \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/type_half.hpp \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/type_half.inl \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/integer.hpp \
- /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/func_integer.inl
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/func_integer.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/matrix_transform.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/matrix_projection.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/../gtc/constants.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/../gtc/constants.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/matrix_projection.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/matrix_clip_space.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/matrix_clip_space.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/matrix_transform.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../ext/matrix_transform.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/matrix_transform.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/type_ptr.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/quaternion.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_relational.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_relational.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../detail/setup.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_common.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_common.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_float.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_double.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/quaternion_transform.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/quaternion.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/epsilon.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../detail/setup.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/epsilon.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/vec1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_float1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_double1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_int1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
+ /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/gtc/type_ptr.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.h \
+ /usr/include/GLFW/glfw3.h

@@ -10,10 +10,10 @@ add_executable(opengl_omp_sample_program
     src/main.cpp
     src/glad.h
     src/glad.c
-    src/simple_triangle_example.h
-    src/simple_triangle_example.cpp
-    src/custom_multi_example.h
-    src/custom_multi_example.cpp
+    src/manager.h
+    src/manager.cpp
+    src/entity.h
+    src/entity.cpp
     src/glm/glm.hpp
     src/glm/gtc/matrix_transform.hpp
     src/glm/gtc/type_ptr.hpp

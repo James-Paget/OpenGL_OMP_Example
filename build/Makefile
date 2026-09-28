@@ -129,29 +129,29 @@ opengl_omp_sample_program/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/build
 .PHONY : opengl_omp_sample_program/fast
 
-src/custom_multi_example.o: src/custom_multi_example.cpp.o
-.PHONY : src/custom_multi_example.o
+src/entity.o: src/entity.cpp.o
+.PHONY : src/entity.o
 
 # target to build an object file
-src/custom_multi_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/custom_multi_example.cpp.o
-.PHONY : src/custom_multi_example.cpp.o
+src/entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o
+.PHONY : src/entity.cpp.o
 
-src/custom_multi_example.i: src/custom_multi_example.cpp.i
-.PHONY : src/custom_multi_example.i
+src/entity.i: src/entity.cpp.i
+.PHONY : src/entity.i
 
 # target to preprocess a source file
-src/custom_multi_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/custom_multi_example.cpp.i
-.PHONY : src/custom_multi_example.cpp.i
+src/entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.i
+.PHONY : src/entity.cpp.i
 
-src/custom_multi_example.s: src/custom_multi_example.cpp.s
-.PHONY : src/custom_multi_example.s
+src/entity.s: src/entity.cpp.s
+.PHONY : src/entity.s
 
 # target to generate assembly for a file
-src/custom_multi_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/custom_multi_example.cpp.s
-.PHONY : src/custom_multi_example.cpp.s
+src/entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.s
+.PHONY : src/entity.cpp.s
 
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
@@ -201,29 +201,29 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/simple_triangle_example.o: src/simple_triangle_example.cpp.o
-.PHONY : src/simple_triangle_example.o
+src/manager.o: src/manager.cpp.o
+.PHONY : src/manager.o
 
 # target to build an object file
-src/simple_triangle_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/simple_triangle_example.cpp.o
-.PHONY : src/simple_triangle_example.cpp.o
+src/manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o
+.PHONY : src/manager.cpp.o
 
-src/simple_triangle_example.i: src/simple_triangle_example.cpp.i
-.PHONY : src/simple_triangle_example.i
+src/manager.i: src/manager.cpp.i
+.PHONY : src/manager.i
 
 # target to preprocess a source file
-src/simple_triangle_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/simple_triangle_example.cpp.i
-.PHONY : src/simple_triangle_example.cpp.i
+src/manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.i
+.PHONY : src/manager.cpp.i
 
-src/simple_triangle_example.s: src/simple_triangle_example.cpp.s
-.PHONY : src/simple_triangle_example.s
+src/manager.s: src/manager.cpp.s
+.PHONY : src/manager.s
 
 # target to generate assembly for a file
-src/simple_triangle_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/simple_triangle_example.cpp.s
-.PHONY : src/simple_triangle_example.cpp.s
+src/manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.s
+.PHONY : src/manager.cpp.s
 
 # Help Target
 help:
@@ -234,18 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opengl_omp_sample_program"
-	@echo "... src/custom_multi_example.o"
-	@echo "... src/custom_multi_example.i"
-	@echo "... src/custom_multi_example.s"
+	@echo "... src/entity.o"
+	@echo "... src/entity.i"
+	@echo "... src/entity.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/simple_triangle_example.o"
-	@echo "... src/simple_triangle_example.i"
-	@echo "... src/simple_triangle_example.s"
+	@echo "... src/manager.o"
+	@echo "... src/manager.i"
+	@echo "... src/manager.s"
 .PHONY : help
 
 

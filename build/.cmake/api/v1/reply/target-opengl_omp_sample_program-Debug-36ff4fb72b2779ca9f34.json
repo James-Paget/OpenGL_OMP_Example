@@ -272,24 +272,24 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/simple_triangle_example.h",
+			"path" : "src/manager.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/simple_triangle_example.cpp",
+			"path" : "src/manager.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/custom_multi_example.h",
+			"path" : "src/entity.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/custom_multi_example.cpp",
+			"path" : "src/entity.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
