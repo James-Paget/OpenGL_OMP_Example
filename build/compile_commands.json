@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -o CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/simple_triangle_example.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/simple_triangle_example.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/simple_triangle_example.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/simple_triangle_example.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/custom_multi_example.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/custom_multi_example.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/custom_multi_example.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/custom_multi_example.cpp.o"
+}
+]
