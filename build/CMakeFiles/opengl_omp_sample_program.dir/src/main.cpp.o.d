@@ -389,4 +389,6 @@ CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o: \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/type_half.hpp \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/type_half.inl \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/integer.hpp \
- /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/func_integer.inl
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/func_integer.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.h

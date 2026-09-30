@@ -36,3 +36,17 @@ int main(int argc, char *argv[]) {
     glfwTerminate();    // Stop GLFW before program end - clean-up
     return 0;
 }
+
+/*
+(1). Multiple vertex sets -> different VAOs to bind
+  X -> Resource types /w vertex sets
+    -> Floor function                                               --- FLEXIBLE VERTEX ARRAYS
+    -> HUD vertex figures -> dynamic vertices for shifting values   ---
+(2). RESOURCE SEARCH + PINGING IN PARALLEL
+(3). BALLISTIC THROWING
+(4). 2D MAP WITH HEIGHT PARAM, SIMPLE FLOOR
+    -> 2D MATHS + Z FIXING
+
+(5). Write text+graph functions -> make vertex sets/use textures for text
+(6). LIGHTING, MODELS
+*/

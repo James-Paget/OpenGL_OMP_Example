@@ -22,5 +22,17 @@
   "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o"
 }
 ]

@@ -129,6 +129,30 @@ opengl_omp_sample_program/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/build
 .PHONY : opengl_omp_sample_program/fast
 
+src/creature.o: src/creature.cpp.o
+.PHONY : src/creature.o
+
+# target to build an object file
+src/creature.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o
+.PHONY : src/creature.cpp.o
+
+src/creature.i: src/creature.cpp.i
+.PHONY : src/creature.i
+
+# target to preprocess a source file
+src/creature.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.i
+.PHONY : src/creature.cpp.i
+
+src/creature.s: src/creature.cpp.s
+.PHONY : src/creature.s
+
+# target to generate assembly for a file
+src/creature.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.s
+.PHONY : src/creature.cpp.s
+
 src/entity.o: src/entity.cpp.o
 .PHONY : src/entity.o
 
@@ -225,6 +249,30 @@ src/manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.s
 .PHONY : src/manager.cpp.s
 
+src/resource.o: src/resource.cpp.o
+.PHONY : src/resource.o
+
+# target to build an object file
+src/resource.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o
+.PHONY : src/resource.cpp.o
+
+src/resource.i: src/resource.cpp.i
+.PHONY : src/resource.i
+
+# target to preprocess a source file
+src/resource.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.i
+.PHONY : src/resource.cpp.i
+
+src/resource.s: src/resource.cpp.s
+.PHONY : src/resource.s
+
+# target to generate assembly for a file
+src/resource.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.s
+.PHONY : src/resource.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -234,6 +282,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opengl_omp_sample_program"
+	@echo "... src/creature.o"
+	@echo "... src/creature.i"
+	@echo "... src/creature.s"
 	@echo "... src/entity.o"
 	@echo "... src/entity.i"
 	@echo "... src/entity.s"
@@ -246,6 +297,9 @@ help:
 	@echo "... src/manager.o"
 	@echo "... src/manager.i"
 	@echo "... src/manager.s"
+	@echo "... src/resource.o"
+	@echo "... src/resource.i"
+	@echo "... src/resource.s"
 .PHONY : help
 
 

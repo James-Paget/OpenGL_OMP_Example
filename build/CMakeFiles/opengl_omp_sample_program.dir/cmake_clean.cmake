@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o"
+  "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o.d"
   "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o"
   "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o.d"
   "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o"
@@ -7,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o.d"
   "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o"
   "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o.d"
+  "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o"
+  "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o.d"
   "opengl_omp_sample_program"
   "opengl_omp_sample_program.pdb"
 )

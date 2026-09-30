@@ -9,9 +9,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

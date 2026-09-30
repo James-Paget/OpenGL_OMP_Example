@@ -38,7 +38,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 22,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
@@ -134,7 +134,9 @@
 			[
 				0,
 				4,
-				6
+				6,
+				8,
+				10
 			]
 		},
 		{
@@ -235,7 +237,9 @@
 				0,
 				2,
 				4,
-				6
+				6,
+				8,
+				10
 			]
 		},
 		{
@@ -246,8 +250,10 @@
 				3,
 				5,
 				7,
-				8,
-				9
+				9,
+				11,
+				12,
+				13
 			]
 		}
 	],
@@ -290,6 +296,28 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/entity.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/resource.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/resource.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/creature.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/creature.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

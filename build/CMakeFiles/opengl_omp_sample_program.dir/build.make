@@ -125,12 +125,42 @@ CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp -o CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.s
 
+CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o: CMakeFiles/opengl_omp_sample_program.dir/flags.make
+CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o: /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp
+CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o: CMakeFiles/opengl_omp_sample_program.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o -MF CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o.d -o CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp
+
+CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp > CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.i
+
+CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp -o CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.s
+
+CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o: CMakeFiles/opengl_omp_sample_program.dir/flags.make
+CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o: /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp
+CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o: CMakeFiles/opengl_omp_sample_program.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o -MF CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o.d -o CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp
+
+CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp > CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.i
+
+CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp -o CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.s
+
 # Object files for target opengl_omp_sample_program
 opengl_omp_sample_program_OBJECTS = \
 "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o" \
 "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o" \
 "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o" \
-"CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o"
+"CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o" \
+"CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o" \
+"CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o"
 
 # External object files for target opengl_omp_sample_program
 opengl_omp_sample_program_EXTERNAL_OBJECTS =
@@ -139,6 +169,8 @@ opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp
 opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o
 opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o
 opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o
+opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o
+opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o
 opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/build.make
 opengl_omp_sample_program: /usr/lib/x86_64-linux-gnu/libGLX.so
 opengl_omp_sample_program: /usr/lib/x86_64-linux-gnu/libOpenGL.so
@@ -147,7 +179,7 @@ opengl_omp_sample_program: /usr/lib/x86_64-linux-gnu/libpthread.a
 opengl_omp_sample_program: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so
 opengl_omp_sample_program: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so
 opengl_omp_sample_program: CMakeFiles/opengl_omp_sample_program.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable opengl_omp_sample_program"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable opengl_omp_sample_program"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/opengl_omp_sample_program.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
