@@ -30,7 +30,7 @@ const char *fragmentShaderSourceMulti = "#version 330 core\n"
     "}\0";
 
 
-void manage_simulation_main(GLFWwindow *window, unsigned int screen_width, const unsigned int screen_height) {
+void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, unsigned int screen_width, const unsigned int screen_height) {
     /*
     . Defines the behaviour of the simulation logic and visuals
     . Separated from the core initialisation of the OpenGL
@@ -115,39 +115,80 @@ void manage_simulation_main(GLFWwindow *window, unsigned int screen_width, const
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // Fill the face of drawn VAOs, not wireframe, and colour the backs too
 
     // Render
-    while(!glfwWindowShouldClose(window)) {
-        glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        glUseProgram(shaderProgram);    // Uses the shader compiled
-        glBindVertexArray(VAO_entity);   // Updates/resets VAO_entity for next frame
-        for(uint i=0; i<entity_number; i++) {   // For each prism, draw separately
-            glm::mat4 model = glm::mat4(1.0f);          // Init identity matrices
-            glm::mat4 view = glm::mat4(1.0f);           //
-            glm::mat4 projection = glm::mat4(1.0f);     //
-
-            // Apply transforms to meshes
-            model = glm::translate(model, entities[i].position);
-
-            // Apply transforms to 'camera'
-            view = glm::translate(view, glm::vec3(0.0f, 0.0f, -25.0f));
-            projection = glm::perspective(glm::radians(45.0f), (float)screen_width / (float)screen_height, 0.1f, 100.0f);
-
-            // Set uniforms for each prism
-            glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model) );
-            glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view) );
-            glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection) );
-
-            // Draws the individual prism
-            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-        }
-
-        glfwSwapBuffers(window);
+    float prior_t = glfwGetTime();   // Time on previous frame
+    float delta_t = 0.016f;   // Time between rendered frames -> ~0.016 for 60fps (UPDATED every frame anyway, initialised as this to prevent delta_t=0.0f errors)
+    while( !glfwWindowShouldClose(core_window) && !glfwWindowShouldClose(hud_window) ) {
+        // ###
+        // ### DT CHANGING DRAMATICALLY WHEN RESIZING HUD_WINDOW HEIGHT
+        // ###
+        render_core(core_window, shaderProgram, VAO_entity, entities, entity_number, screen_width, screen_height, &prior_t, &delta_t);
+        render_hud(hud_window, shaderProgram, VAO_entity, screen_width, screen_height);
+        // Once-per frame
         glfwPollEvents();
     }
+
+    // Clean-up
     glDeleteVertexArrays(1, &VAO_entity);
     glDeleteVertexArrays(1, &VBO_entity);
 
+}
+
+void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned int VAO_entity, Entity *entities, const unsigned int entity_number, const unsigned int screen_width, const unsigned int screen_height, float *prior_t, float *delta_t) {
+    // Render CORE
+    glfwMakeContextCurrent(core_window);
+
+    *delta_t = (glfwGetTime()-*prior_t +0.0000001f);    // **NOTE; +0.0000001f included to prevent /0 errors
+    glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glUseProgram(shaderProgram);    // Uses the shader compiled
+    glBindVertexArray(VAO_entity);   // Updates/resets VAO_entity for next frame
+    for(uint i=0; i<entity_number; i++) {
+        // Update physics for each entity
+        entities[i].directional_thrust(entities[i].forward_direction, 0.005f);
+        float dist = std::max<float>( sqrt( pow(entities[i].position.x, 2) + pow(entities[i].position.y, 2) + pow(entities[i].position.z, 2) ), 0.0000001f);
+        entities[i].directional_thrust(
+            glm::vec3(
+                -entities[i].position.x/dist,
+                -entities[i].position.y/dist,
+                -entities[i].position.z/dist
+            ), 
+            0.01f
+        );
+        entities[i].update_dynamics(*delta_t);
+
+        // Draw each entity
+        glm::mat4 model = glm::mat4(1.0f);          // Init identity matrices
+        glm::mat4 view = glm::mat4(1.0f);           //
+        glm::mat4 projection = glm::mat4(1.0f);     //
+
+        // Apply transforms to meshes
+        model = glm::translate(model, entities[i].position);
+
+        // Apply transforms to 'camera'
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -25.0f));
+        projection = glm::perspective(glm::radians(45.0f), (float)screen_width / (float)screen_height, 0.1f, 100.0f);
+
+        // Set uniforms for each prism
+        glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model) );
+        glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view) );
+        glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection) );
+
+        // Draws the individual prism
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+    }
+    *prior_t = glfwGetTime();
+    glfwSwapBuffers(core_window);
+}
+void render_hud(GLFWwindow *hud_window, unsigned int shaderProgram, unsigned int VAO_entity, const unsigned int screen_width, const unsigned int screen_height) {
+    // Render HUD
+    glfwMakeContextCurrent(hud_window);
+    glClearColor(0.1f, 0.2f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glUseProgram(shaderProgram);    // Uses the shader compiled
+    glBindVertexArray(VAO_entity);   // Updates/resets VAO_entity for next frame
+    glfwSwapBuffers(hud_window);
 }
 
 void populate_entities(Entity *entities, const unsigned int entity_number, float *spawn_dimemsions) {
@@ -165,6 +206,10 @@ void populate_entities(Entity *entities, const unsigned int entity_number, float
             spawn_dimemsions[1]*(0.5f -rand_float(i*entity_number+2))*2,
             spawn_dimemsions[2]*(0.5f -rand_float(i*entity_number+3))*2
         );
+        float dir_theta = 2.0f*3.14f*rand_float(i*entity_number +4);
+        float dir_phi = 1.0f*3.14f*rand_float(i*entity_number +5);
+        newEntity.forward_direction = glm::vec3(cos(dir_theta)*sin(dir_phi), sin(dir_theta)*sin(dir_phi), cos(dir_phi));
+        newEntity.up_direction = glm::vec3(cos(dir_theta)*sin(dir_phi-3.14f/2.0f), sin(dir_theta)*sin(dir_phi-3.14f/2.0f), cos(dir_phi-3.14f/2.0f));
         entities[i] = newEntity;
     }
 }
@@ -179,3 +224,10 @@ float rand_float(int seed_offset) {
     std::srand(std::time(0)+seed_offset);
     return (float)(std::rand()>>23)/256.0f;
 }
+
+/*
+2D MAP WITH HEIGHT PARAM, SIMPLE FLOOR
+    -> 2D MATHS + Z FIXING
+LIGHTING, MODELS
+BALLISTIC THROWING
+*/

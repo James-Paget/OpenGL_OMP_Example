@@ -9,15 +9,20 @@ const unsigned int screen_width = 800;
 const unsigned int screen_height = 600;
 
 int main(int argc, char *argv[]) {
-    GLFWwindow* window;
+    GLFWwindow* core_window;
+    GLFWwindow* hud_window;
 
     if( !glfwInit() ) {     // Initialise GLFW, else leave with error code
         std::cout << "GLFW failed to load" << std::endl;
         return -1;
     }
 
-    window = glfwCreateWindow(screen_width, screen_height, "WINDOW_NAME", NULL, NULL);
-    glfwMakeContextCurrent(window);
+    core_window = glfwCreateWindow(screen_width, screen_height, "CORE", NULL, NULL);
+    hud_window = glfwCreateWindow(screen_width, screen_height>>1, "HUD", NULL, NULL);
+    glfwMakeContextCurrent(core_window);
+    // ###
+    // ### DOES THIS NEED DETATCHING FIRST?
+    // ###
 
     // **NOTE; Must be done AFTER GLFW initialised (hence must terminate too if there is an error)
     if( !gladLoadGLLoader((GLADloadproc) glfwGetProcAddress) ) {        // Loading GLAD info, else leave with error code
@@ -26,7 +31,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    manage_simulation_main(window, screen_width, screen_height);
+    manage_simulation_main(core_window, hud_window, screen_width, screen_height);
 
     glfwTerminate();    // Stop GLFW before program end - clean-up
     return 0;
