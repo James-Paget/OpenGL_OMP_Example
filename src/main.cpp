@@ -50,3 +50,11 @@ int main(int argc, char *argv[]) {
 (5). Write text+graph functions -> make vertex sets/use textures for text
 (6). LIGHTING, MODELS
 */
+
+
+// ###
+// ### (1) Camera controls
+// ### (2) More controlled pings for testing
+// ### (3) Terrain loading + OMP for loading (even-odd lighting pairing issue investigate)
+// ### (4) Upload to Github
+// ###

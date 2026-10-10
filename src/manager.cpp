@@ -4,8 +4,10 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include <omp.h>
 
 #include "manager.h"
+#include "simulation_consts.h"
 
 
 const char *vertexShaderSourceMulti = "#version 330 core\n"
@@ -30,6 +32,25 @@ const char *fragmentShaderSourceMulti = "#version 330 core\n"
     "}\0";
 
 
+const char *vertexShader_pingSphere = "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "uniform mat4 model;\n"
+    "uniform mat4 view;\n"
+    "uniform mat4 projection;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+    "}\0";
+
+const char *fragmentShader_pingSphere = "#version 330 core\n"
+    "uniform vec4 colourData;\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = colourData;\n"
+    "}\0";
+
+
 void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, unsigned int screen_width, const unsigned int screen_height) {
     /*
     . Defines the behaviour of the simulation logic and visuals
@@ -41,6 +62,17 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
 
     const unsigned int resource_number = 10;
     Resource resources[resource_number];
+
+    int ping_number = 0;   // Counts pings as they are added and removed
+    const unsigned int pings_maximum = 6*PING_MAXIMUM;    // E.G 6*X length => X pings max
+    // Pings stored as {
+    //    X_centre, 
+    //    Y_centre, 
+    //    Z_centre, 
+    //    start_time, strength, signal,
+    //       ... REPEATING ...
+    // } to specify the ping center
+    float pings[] = {};
 
     float entity_vertex_data[] = {
         // Creature Cube
@@ -85,6 +117,25 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
         11,13,8,
     };
 
+    float ping_sphere_vertex_data[] = {
+        1.0f, 0.0f, 0.0f,      // 4 Planar vertices
+        0.0f, 0.0f, -1.0f,
+        -1.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 1.0f, 0.0f,      // Top
+        0.0f, -1.0f, 0.0f,     // Bottom
+    };        // [X,Y,Z, R,G,B]
+    int ping_sphere_vertex_indices[] = {
+        0,4,1,     // Upper faces
+        1,4,2,
+        2,4,3,
+        3,4,0,
+        0,5,1,    // Lower faces
+        1,5,2,
+        2,5,3,
+        3,5,0
+    };       // [I1, I2, I3]
+
     // Populate data structures made
     // float spawn_dimensions[3] = {float(screen_width), float(screen_height), float(screen_height)};
     float spawn_dimensions[3] = {7.5f, 7.5f, 7.5f};
@@ -93,7 +144,10 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
 
     // Setup shaders + OpenGL arrays
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    // DEFAULT SHADER
     unsigned int shaderProgram;
     shaderProgram = glCreateProgram();
 
@@ -113,14 +167,28 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     glDeleteShader(vertexShaderID);
     glDeleteShader(fragmentShaderID);
 
-    // Make VBO, VAO, EBO
-    // ###
-    // ###
-    // ### MULTIPLE VAOs/VBOs/EBOs
-    // ### OR 
-    // ### WITHIN A SINGLE BUFFER SHUFFLE BY SOME OFFSET
-    // ###
-    // ###
+    // PING SPHERE SHADER
+    unsigned int shaderProgram_pingSphere;
+    shaderProgram_pingSphere = glCreateProgram();
+
+    unsigned int vertexShaderID_pingSphere;
+    vertexShaderID_pingSphere = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShaderID_pingSphere, 1, &vertexShader_pingSphere, NULL);
+    glCompileShader(vertexShaderID_pingSphere);
+    unsigned int fragmentShaderID_pingSphere;
+    fragmentShaderID_pingSphere = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShaderID_pingSphere, 1, &fragmentShader_pingSphere, NULL);
+    glCompileShader(fragmentShaderID_pingSphere);
+
+    glAttachShader(shaderProgram_pingSphere, vertexShaderID_pingSphere);
+    glAttachShader(shaderProgram_pingSphere, fragmentShaderID_pingSphere);
+    glLinkProgram(shaderProgram_pingSphere);
+
+    glDeleteShader(vertexShaderID_pingSphere);
+    glDeleteShader(fragmentShaderID_pingSphere);
+
+    // Make + Setup all VBO, VAO, EBO buffers
+    // ---- STANDARD MESHES ----
     unsigned int VBO_entity;     // Vertex array buffer for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
     unsigned int VAO_entity;     // Vertex array buffer for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
     unsigned int EBO_entity;     // Specifying shape through indices, hence EBO needed too (not just a VBO)
@@ -141,13 +209,33 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float))); // 0=Pos, 1=Colour
     glEnableVertexAttribArray(1);
 
+    // ---- PING SPHERE MESHES ----
+    unsigned int VBO_ping_sphere;     // Vertex buffer object for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
+    unsigned int VAO_ping_sphere;     // Vertex array object for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
+    unsigned int EBO_ping_sphere;     // Specifying shape through indices, hence EBO needed too (not just a VBO)
+    
+    glGenBuffers(1, &VBO_ping_sphere);   // Generate 1 buffer, give ID to VAO_entity
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_ping_sphere);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(ping_sphere_vertex_data), ping_sphere_vertex_data, GL_STATIC_DRAW);
+    
+    glGenVertexArrays(1, &VAO_ping_sphere);   // Generate 1 buffer, give ID to VAO_entity
+    glBindVertexArray(VAO_ping_sphere);
+
+    glGenBuffers(1, &EBO_ping_sphere);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_ping_sphere);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(ping_sphere_vertex_indices), ping_sphere_vertex_indices, GL_STATIC_DRAW);    // This object ONLY interested in indices -> Vertex data pulled from bound VBO
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // Fill the face of drawn VAOs, not wireframe, and colour the backs too
 
     // Render
     float prior_t = glfwGetTime();   // Time on previous frame
     float delta_t = 0.016f;   // Time between rendered frames -> ~0.016 for 60fps (UPDATED every frame anyway, initialised as this to prevent delta_t=0.0f errors)
     while( !glfwWindowShouldClose(core_window) && !glfwWindowShouldClose(hud_window) ) {
-        render_core(core_window, shaderProgram, VAO_entity, creatures, creature_number, resources, resource_number, screen_width, screen_height, &prior_t, &delta_t);
+        calculate_entities(pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, creatures, creature_number, resources, resource_number, &prior_t);
+        render_core(core_window, shaderProgram, shaderProgram_pingSphere, VAO_entity, VAO_ping_sphere, pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, creatures, creature_number, resources, resource_number, screen_width, screen_height, &prior_t, &delta_t);
         render_hud(hud_window, shaderProgram, VAO_entity, creatures, creature_number, screen_width, screen_height);
         // Once-per frame
         glfwPollEvents();
@@ -159,16 +247,26 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
 
 }
 
-void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned int VAO_entity, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, const unsigned int screen_width, const unsigned int screen_height, float *prior_t, float *delta_t) {
+void calculate_entities(float *pings, int *ping_number, float *ping_sphere_vertex_data, int *ping_sphere_vertex_indices, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, float *prior_t) {
+    /*
+    . Performs calculations for entities
+    . These include sending and processing pings, updating dynamics, etc
+    */
+    evaluate_pings(pings, ping_number, creatures, creature_number, resources, resource_number, glfwGetTime());
+    remove_pings(pings, ping_number, glfwGetTime());
+}
+
+void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned int shaderProgram_pingSphere, unsigned int VAO_entity, unsigned int VAO_ping_sphere, float *pings, int *ping_number, float *ping_sphere_vertex_data, int *ping_sphere_vertex_indices, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, const unsigned int screen_width, const unsigned int screen_height, float *prior_t, float *delta_t) {
     // Render CORE
     glfwMakeContextCurrent(core_window);
+
+    read_keypress_core(core_window, pings, ping_number, creatures);
 
     *delta_t = (glfwGetTime()-*prior_t +0.0000001f);    // **NOTE; +0.0000001f included to prevent /0 errors
     glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glUseProgram(shaderProgram);    // Uses the shader compiled
-    glBindVertexArray(VAO_entity);   // Updates/resets VAO_entity for next frame
 
     glm::mat4 view = glm::mat4(1.0f);           // Init identity matrices
     glm::mat4 projection = glm::mat4(1.0f);     //
@@ -177,6 +275,7 @@ void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned i
     glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view) );
     glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection) );
 
+    glBindVertexArray(VAO_entity);   // Updates/resets VAO_entity for next frame
     for(uint i=0; i<creature_number; i++) {
         // Update physics for each entity
         creatures[i].directional_thrust(creatures[i].forward_direction, 0.005f);
@@ -214,9 +313,50 @@ void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned i
         glDrawElements(GL_TRIANGLES, 24, GL_UNSIGNED_INT, (void*)(36*sizeof(float)));
     }
 
+    // Draw pings
+    glUseProgram(shaderProgram_pingSphere);    // Uses the shader compiled
+    glUniformMatrix4fv( glGetUniformLocation(shaderProgram_pingSphere, "view"), 1, GL_FALSE, glm::value_ptr(view) );
+    glUniformMatrix4fv( glGetUniformLocation(shaderProgram_pingSphere, "projection"), 1, GL_FALSE, glm::value_ptr(projection) );
+    glBindVertexArray(VAO_ping_sphere);   // Swaps to the other VAO/EBO needed
+
+    for(uint i=0; i<(*ping_number); i++) {
+        // Centre each ping
+        float radius = fetch_ping_radius(pings, i, glfwGetTime());
+        float strength = fetch_ping_signal_strength(pings, i, glfwGetTime());
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(pings[i*6 +0], pings[i*6 +1], pings[i*6 +2]));
+        model = glm::scale(model, glm::vec3(radius));    // NOTE** Model vertex coords has a default radius of 1f, hence can just multiply by radius here
+        glm::vec4 colourData = (int(pings[i*6 +5])==1) ? glm::vec4(1.0f, 1.0f, 0.0f, strength-PING_SIGNAL_REMOVE_THRESHOLD) : glm::vec4(1.0f, 0.0f, 0.0f, strength-PING_SIGNAL_REMOVE_THRESHOLD);
+
+        // Set uniforms for each entity
+        glUniformMatrix4fv( glGetUniformLocation(shaderProgram_pingSphere, "model"), 1, GL_FALSE, glm::value_ptr(model) );
+        glUniform4fv( glGetUniformLocation(shaderProgram_pingSphere, "colourData"), 1, glm::value_ptr(colourData) );
+
+        // Draws the individual pings -> Referring to index offset
+        glDrawElements(GL_TRIANGLES, 24, GL_UNSIGNED_INT, (void*)(0)); // NOTE** Offset set to skip older indices
+    }
+
     *prior_t = glfwGetTime();
     glfwSwapBuffers(core_window);
 }
+void read_keypress_core(GLFWwindow *window, float *pings, int *ping_number, Creature *creatures) {
+    if(glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS) {
+        std::cout << "glfwGetTime()= " << glfwGetTime() << *ping_number << std::endl;
+        std::cout << "    PING COUNT = " << *ping_number << std::endl;
+        if(*ping_number > 0) {
+            std::cout << "        0th = [" << pings[0] <<", "<< pings[1] <<", "<< pings[2] <<", "<< pings[3] <<", "<< pings[4] <<", "<< pings[5] <<"]"<< std::endl;
+        }
+    }
+    if(glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+        if(*ping_number == 0) {
+            std::cout << "PING" << std::endl;
+            add_ping(pings, ping_number, &(creatures[0]), 1.0f, 1.0f, glfwGetTime());
+            add_ping(pings, ping_number, &(creatures[1]), 1.0f, 1.0f, glfwGetTime());
+            std::cout << *ping_number << std::endl;
+        }
+    }
+}
+
 void render_hud(GLFWwindow *hud_window, unsigned int shaderProgram, unsigned int VAO_entity, Creature *creatures, const unsigned int creature_number, const unsigned int screen_width, const unsigned int screen_height) {
     // Render HUD
     glfwMakeContextCurrent(hud_window);
@@ -276,6 +416,133 @@ void populate_resources(Resource *resources, const unsigned int resource_number,
         newResource.forward_direction = glm::vec3(cos(dir_theta)*sin(dir_phi), sin(dir_theta)*sin(dir_phi), cos(dir_phi));
         newResource.up_direction = glm::vec3(cos(dir_theta)*sin(dir_phi-3.14f/2.0f), sin(dir_theta)*sin(dir_phi-3.14f/2.0f), cos(dir_phi-3.14f/2.0f));
         resources[i] = newResource;
+    }
+}
+
+float fetch_ping_signal_strength(float *pings, int ping_index, float time) {
+    /*
+    . Returns the signal strength across a ping at the time specified (compares to the original time stored by the ping)
+    */
+   return exp(-PING_SIGNAL_DECAY_RATE*(time-pings[ping_index*6 +3]));    // NOTE** time-pings[...] = current_t-start_t => should always be positive
+}
+float fetch_ping_radius(float *pings, int ping_index, float time) {
+    /*
+    . Returns the radius of the ping currently after it has spread over time and decayed in strength
+    */
+   return 2.0f*tanh(PING_SIGNAL_DECAY_RATE*(time-pings[ping_index*6 +3]));
+}
+void add_ping(float *pings, int *ping_number, Entity *entity, float strength, float signal, float time) {
+    /*
+    . Adds a ping on behalf of another entity
+    . Performs checks to ensure the ping is allowed and parameters regarding it are updated
+
+    . strength = strength of the ping signal -> high strength pings will take longer to reach the deacy threshold
+    . signal = signal used for this ping -> indicates the 'action' of the ping
+    . time = current time (GLFW time)
+    */
+    if(*ping_number < PING_MAXIMUM) {
+        if(time -entity->prev_ping_time >= entity->ping_cooldown) {
+            entity->ping(pings, ping_number, time, strength, signal);
+            entity->prev_ping_time = time;
+            *ping_number = (*ping_number) +1;
+        }
+    }
+}
+void remove_pings(float *pings, int *ping_number, float time) {
+    /*
+    . Removes pings with a signal strength too low (based on decay for current time)
+
+    . time = current time of sim (used to remove pings)
+    */
+    int ping_rewrite_offset = 0;    // Number of ping spaces back to rewrite a ping (occurs to subsequent pings)
+    for(int i=0; i<(*ping_number); i++) {   // *NOTE; 6 elements per ping
+        if(fetch_ping_signal_strength(pings, i, time) <= PING_SIGNAL_REMOVE_THRESHOLD) {
+            ping_rewrite_offset++;  // => Subsequent pings must be moved
+        } else {        // If ping is still going
+            if(ping_rewrite_offset > 0) {      // If any prior pings have been removed, rewrite this ping earlier in the sequence
+                for(int j=0; j<6; j++) {
+                    pings[(i-ping_rewrite_offset)*6 +j] = pings[i*6 +j];
+                }
+            }
+        }
+    }
+    *ping_number = *ping_number-ping_rewrite_offset;
+}
+void evaluate_pings(float *pings, int *ping_number, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, float time) {
+    /*
+    . Checks for actions to be completed for each ping
+    . E.G.
+        Signal | Action
+        1       Reflect ping on resource
+        2       Make creatures search after hearing ping
+        ...
+    */
+    const int THREAD_NUM = 4;   // Used for parallel search through entities (resources)
+
+    for(int i=0; i<(*ping_number); i++) {
+        int found_entity_limit = 10;
+        int found_entity_count = 0;
+        int found_entity_indices[found_entity_limit] = {};
+        float signal = pings[i*6 +5];
+        glm::vec3 ping_origin = glm::vec3(pings[i*6 +0], pings[i*6 +1], pings[i*6 +2]);
+        float ping_radius = fetch_ping_radius(pings, i, time);
+        switch (int(signal)) {  // Consider the signal type (cast to int, but not an issue since always considered int-like anyway)
+            case 1:
+                // (1) Check if at least 1 resource within radius
+                //    (1.5) Send another resource located ping (signal=2) if so --> Only do once every X frames/time passed
+                search_entities_spherical(resources, resource_number, ping_origin, ping_radius, found_entity_indices, &found_entity_count, &found_entity_limit, THREAD_NUM);
+                for(int i=0; i<found_entity_count; i++) {   // Make a new ping at each found resource
+                    add_ping(pings, ping_number, &(resources[found_entity_indices[i]]), 1.0f, 2.0f, time);
+                }
+                break;
+            case 2:
+                // (1) Check for all creatures in radius
+                //    (1.5) Change all their behaviours to a resource search mode if not already
+                //pass
+                break;
+        }
+    }
+}
+void search_entities_spherical(Entity *entities, const unsigned int entity_number, glm::vec3 origin, float search_radius, int *found_entity_indices, int *found_entity_count, int *found_entity_limit, const int THREAD_NUM) {
+    /*
+    . Looks for entities in a spherical radius
+    . Searches up to max number, then terminates
+
+    . found_entity_limit = Max number of entities to be found before terminating the search
+    */
+    int thread_entity_count[THREAD_NUM];
+    int thread_found_entity_indices[THREAD_NUM*(*found_entity_limit)];  // Each thread has access to found_entity_limit entries, and no more -> collected together at the end
+    
+    // #pragma omp parallel num_threads(THREAD_NUM) for reduction(+:(*found_entity_count))
+    #pragma omp parallel num_threads(THREAD_NUM)
+    {
+        int thread_index = omp_get_thread_num();
+        thread_entity_count[thread_index] = 0;  // Initialise their section as 0
+        for(int i=0; i<*found_entity_limit; i++) {thread_found_entity_indices[thread_index*(*found_entity_limit) +i]=-1;}   // Initialise all spaces this thread can use to indices 0
+        int start_index = thread_index*int(floor(float(entity_number)/float(THREAD_NUM)));
+        int end_index = (thread_index<THREAD_NUM-1) ? (thread_index+1)*int(floor(float(entity_number)/float(THREAD_NUM))) : entity_number;   // NOTE** Ensures last thread covers all remaining entities (after taking floor of divided entity number)
+
+        for(int i=start_index; i<end_index; i++) {
+            float separation = sqrt(pow(origin.x-entities[i].position.x,2) +pow(origin.y-entities[i].position.y,2) +pow(origin.z-entities[i].position.z,2));
+            if(separation <= search_radius) {
+                if(thread_entity_count[thread_index] < *found_entity_limit) {
+                    thread_found_entity_indices[ thread_entity_count[thread_index] ] = i;
+                    thread_found_entity_indices[ thread_index*THREAD_NUM +thread_entity_count[thread_index] ] = i;
+                    thread_entity_count[thread_index] = thread_entity_count[thread_index]+1;
+                } else {break;}
+            }
+        }
+    }
+
+    // Gather total count
+    for(int i=0; i<THREAD_NUM; i++) {*found_entity_count = *found_entity_count +thread_entity_count[i];}
+    // Gather first N elements from all threads (removing the spaces) => could possibly have N*limit values found if all threads max out their limit [ALTERNATIVELY, COULD ONLY TAKE THE FIRST M ELEMENTS FROM THREADS COLLECTIVELY -> HENCE LIMIT OBEYED ENTIRELY]
+    int index_gather_count = 0; // Counts correctly re-added indices to the main in set
+    for(int i=0; i<THREAD_NUM*(*found_entity_limit); i++) { // Go through everything, re-add anything with no default value (-1)
+        if(thread_found_entity_indices[i] != -1) {
+            found_entity_indices[index_gather_count] = thread_found_entity_indices[i];
+            index_gather_count++;
+        }
     }
 }
 

@@ -37,3 +37,22 @@ void Entity::update_dynamics(float delta_t) {
     // Reset acceleration
     acceleration = glm::vec3(0.0f, 0.0f, 0.0f);
 }
+void Entity::ping(float *ping_set, int *ping_counter, float current_time, float strength, float signal) {
+    /*
+    . Sends a ping to the ping_set list of pings
+    . This will be removed (by another function) from the set once it has been active for more than PING_SIGNAL_TIME_MAX duration
+    . All pings travel at the same speed
+
+    . ping_counter = index where this ping starts; e.g. 6*ping_number
+    . current_time = current glfwGetTime reading
+    . strength = Starting strength for signal sent; decays over time, must be above a cerrain strength to be reflected by other entities
+    . signal = The type of ping sent; is fixed
+    */
+    ping_set[(*ping_counter)*6+0] = position.x;
+    ping_set[(*ping_counter)*6+1] = position.y;
+    ping_set[(*ping_counter)*6+2] = position.z;
+    ping_set[(*ping_counter)*6+3] = current_time;
+    ping_set[(*ping_counter)*6+4] = strength;
+    ping_set[(*ping_counter)*6+5] = signal;
+    *ping_counter++;
+}
