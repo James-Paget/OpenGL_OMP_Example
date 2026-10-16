@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o.d"

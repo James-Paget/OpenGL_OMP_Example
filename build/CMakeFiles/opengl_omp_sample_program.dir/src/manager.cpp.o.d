@@ -407,4 +407,5 @@ CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o: \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.h \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.h \
  /usr/include/GLFW/glfw3.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.h \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/simulation_consts.h

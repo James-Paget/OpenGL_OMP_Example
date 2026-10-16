@@ -37,24 +37,15 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-/*
-(1). Multiple vertex sets -> different VAOs to bind
-  X -> Resource types /w vertex sets
-    -> Floor function                                               --- FLEXIBLE VERTEX ARRAYS
-    -> HUD vertex figures -> dynamic vertices for shifting values   ---
-(2). RESOURCE SEARCH + PINGING IN PARALLEL
-(3). BALLISTIC THROWING
-(4). 2D MAP WITH HEIGHT PARAM, SIMPLE FLOOR
-    -> 2D MATHS + Z FIXING
+// ### (1) Add HUD elements --> Split into 2 separate files for CORE vs HUD
+// ### (2) Ballistic throwing setup
 
-(5). Write text+graph functions -> make vertex sets/use textures for text
-(6). LIGHTING, MODELS
-*/
+// ### (3) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
+// ### (4) More controlled pings for testing
+// ###  --> Fix issue with ping triggering resources far away
 
+// ### (5) Clean program structure up in general -> removal experimental testing and messy layout + group blocks that are now working correctly
+// ### (6) Write a file read-write system for reading shader files -> cleaner, keep separate
+// ### (7) Ballistic throwing to move found resources / harvest them
 
-// ###
-// ### (1) Camera controls
-// ### (2) More controlled pings for testing
-// ### (3) Terrain loading + OMP for loading (even-odd lighting pairing issue investigate)
-// ### (4) Upload to Github
-// ###
+// ### (8) Lighting + textures + better ground generation formula

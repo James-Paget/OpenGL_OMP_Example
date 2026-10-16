@@ -12,6 +12,8 @@ add_executable(opengl_omp_sample_program
     src/glad.c
     src/manager.h
     src/manager.cpp
+    src/camera_controls.h
+    src/camera_controls.cpp
     src/entity.h
     src/entity.cpp
     src/resource.h

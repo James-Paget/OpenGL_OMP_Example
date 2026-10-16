@@ -129,6 +129,30 @@ opengl_omp_sample_program/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/build
 .PHONY : opengl_omp_sample_program/fast
 
+src/camera_controls.o: src/camera_controls.cpp.o
+.PHONY : src/camera_controls.o
+
+# target to build an object file
+src/camera_controls.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o
+.PHONY : src/camera_controls.cpp.o
+
+src/camera_controls.i: src/camera_controls.cpp.i
+.PHONY : src/camera_controls.i
+
+# target to preprocess a source file
+src/camera_controls.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.i
+.PHONY : src/camera_controls.cpp.i
+
+src/camera_controls.s: src/camera_controls.cpp.s
+.PHONY : src/camera_controls.s
+
+# target to generate assembly for a file
+src/camera_controls.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.s
+.PHONY : src/camera_controls.cpp.s
+
 src/creature.o: src/creature.cpp.o
 .PHONY : src/creature.o
 
@@ -282,6 +306,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opengl_omp_sample_program"
+	@echo "... src/camera_controls.o"
+	@echo "... src/camera_controls.i"
+	@echo "... src/camera_controls.s"
 	@echo "... src/creature.o"
 	@echo "... src/creature.i"
 	@echo "... src/creature.s"

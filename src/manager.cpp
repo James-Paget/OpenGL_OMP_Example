@@ -7,6 +7,7 @@
 #include <omp.h>
 
 #include "manager.h"
+#include "camera_controls.h"
 #include "simulation_consts.h"
 
 
@@ -51,6 +52,38 @@ const char *fragmentShader_pingSphere = "#version 330 core\n"
     "}\0";
 
 
+const char *vertexShader_terrain= "#version 330 core\n"
+    "layout (location = 0) in vec2 aPos;\n"
+    "uniform mat4 coefficients;\n"
+    "uniform mat4 model;\n"
+    "uniform mat4 view;\n"
+    "uniform mat4 projection;\n"
+    "out vec4 heightCol;\n"
+    "void main()\n"
+    "{\n"
+    "   float height = 0.0;\n"
+    "   for(int i=0; i<16; i++) {\n"
+    "       if(i%2==0) {\n"
+    "           height += coefficients[int(floor(float(i)/4.0))][i%4]*sin( i*3.14*aPos.x*0.04f )*0.35;\n"
+    "       } else {\n"
+    "           height += coefficients[int(floor(float(i)/4.0))][i%4]*sin( i*3.14*aPos.y*0.04f )*0.35;\n"
+    "       }\n"
+    "   }\n"
+    "   gl_Position = projection * view * model * vec4(aPos.x, height, aPos.y, 1.0);\n"
+    "   heightCol = vec4(0.5 -height*0.25, 0.5 +height*0.25, 0.0, 1.0);\n"
+    "}\0";
+
+
+const char *fragmentShader_terrain = "#version 330 core\n"
+    "in vec4 heightCol;\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = heightCol;\n"
+    "}\0";
+
+
+
 void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, unsigned int screen_width, const unsigned int screen_height) {
     /*
     . Defines the behaviour of the simulation logic and visuals
@@ -72,7 +105,7 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     //    start_time, strength, signal,
     //       ... REPEATING ...
     // } to specify the ping center
-    float pings[] = {};
+    float pings[6*PING_MAXIMUM] = {};   // {} initialisation just to set all values to 0 to start with
 
     float entity_vertex_data[] = {
         // Creature Cube
@@ -136,6 +169,19 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
         3,5,0
     };       // [I1, I2, I3]
 
+
+    int x_cells = 50;
+    int z_cells = 100;
+    float cell_width = 0.4f;
+    // ######
+    // ### THIS NEEDS SOME CONST STORED NUMBER TO WORK WELL -> DOES NOT LIKE A TEMP RETURN -> FAR ENOUGH
+    // ######   --> SAVE FUNCTION CALLS, THEN PUT INTO SIZE
+    float terrain_vertex_data[ (x_cells+1)*(z_cells+1)*2 ];     // Initialise blank for generation next
+    int terrain_vertex_indices[ (x_cells)*(z_cells)*3*2 ];    //
+    glm::mat4 terrain_coefficients = glm::mat4(0.0f);
+    generate_terrain_vertex_info(x_cells, z_cells, cell_width, terrain_vertex_data, terrain_vertex_indices);
+    generate_terrain_coefficients(4, &terrain_coefficients, 0);
+
     // Populate data structures made
     // float spawn_dimensions[3] = {float(screen_width), float(screen_height), float(screen_height)};
     float spawn_dimensions[3] = {7.5f, 7.5f, 7.5f};
@@ -187,6 +233,26 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     glDeleteShader(vertexShaderID_pingSphere);
     glDeleteShader(fragmentShaderID_pingSphere);
 
+    // TERRAIN SHADER
+    unsigned int shaderProgram_terrain;
+    shaderProgram_terrain = glCreateProgram();
+
+    unsigned int vertexShaderID_terrain;
+    vertexShaderID_terrain = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShaderID_terrain, 1, &vertexShader_terrain, NULL);
+    glCompileShader(vertexShaderID_terrain);
+    unsigned int fragmentShaderID_terrain;
+    fragmentShaderID_terrain = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShaderID_terrain, 1, &fragmentShader_terrain, NULL);
+    glCompileShader(fragmentShaderID_terrain);
+
+    glAttachShader(shaderProgram_terrain, vertexShaderID_terrain);
+    glAttachShader(shaderProgram_terrain, fragmentShaderID_terrain);
+    glLinkProgram(shaderProgram_terrain);
+
+    glDeleteShader(vertexShaderID_terrain);
+    glDeleteShader(fragmentShaderID_terrain);
+
     // Make + Setup all VBO, VAO, EBO buffers
     // ---- STANDARD MESHES ----
     unsigned int VBO_entity;     // Vertex array buffer for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
@@ -228,14 +294,40 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
+
+    // ---- TERRAIN MESHES ----
+    unsigned int VBO_terrain;     // Vertex buffer object for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
+    unsigned int VAO_terrain;     // Vertex array object for a prism (contains vertices needed for this shader + attributes attached) -> Shape can then be made N times at N separate locations using this one defintion of a prism
+    unsigned int EBO_terrain;     // Specifying shape through indices, hence EBO needed too (not just a VBO)
+    
+    glGenBuffers(1, &VBO_terrain);   // Generate 1 buffer, give ID to VAO_entity
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_terrain);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(terrain_vertex_data), terrain_vertex_data, GL_STATIC_DRAW);
+    
+    glGenVertexArrays(1, &VAO_terrain);
+    glBindVertexArray(VAO_terrain);
+
+    glGenBuffers(1, &EBO_terrain);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_terrain);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(terrain_vertex_indices), terrain_vertex_indices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // Fill the face of drawn VAOs, not wireframe, and colour the backs too
 
     // Render
+    glm::vec3 camera_origin = glm::vec3(0.0f, 0.0f, -25.0f);
+    float camera_theta = 0.0f;
+    float camera_phi = 0.0f;
+    float camera_fov = 45.0f;
+
     float prior_t = glfwGetTime();   // Time on previous frame
     float delta_t = 0.016f;   // Time between rendered frames -> ~0.016 for 60fps (UPDATED every frame anyway, initialised as this to prevent delta_t=0.0f errors)
     while( !glfwWindowShouldClose(core_window) && !glfwWindowShouldClose(hud_window) ) {
-        calculate_entities(pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, creatures, creature_number, resources, resource_number, &prior_t);
-        render_core(core_window, shaderProgram, shaderProgram_pingSphere, VAO_entity, VAO_ping_sphere, pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, creatures, creature_number, resources, resource_number, screen_width, screen_height, &prior_t, &delta_t);
+        calculate_entities(pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, terrain_coefficients, cell_width, creatures, creature_number, resources, resource_number, &prior_t);
+        render_core(core_window, shaderProgram, shaderProgram_pingSphere, shaderProgram_terrain, VAO_entity, VAO_ping_sphere, VAO_terrain, pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, &x_cells, &z_cells, terrain_coefficients, creatures, creature_number, resources, resource_number, &camera_origin, &camera_theta, &camera_phi, &camera_fov, screen_width, screen_height, &prior_t, &delta_t);
         render_hud(hud_window, shaderProgram, VAO_entity, creatures, creature_number, screen_width, screen_height);
         // Once-per frame
         glfwPollEvents();
@@ -247,19 +339,21 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
 
 }
 
-void calculate_entities(float *pings, int *ping_number, float *ping_sphere_vertex_data, int *ping_sphere_vertex_indices, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, float *prior_t) {
+void calculate_entities(float *pings, int *ping_number, float *ping_sphere_vertex_data, int *ping_sphere_vertex_indices, glm::mat4 terrain_coefficients, float terrain_width, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, float *prior_t) {
     /*
     . Performs calculations for entities
     . These include sending and processing pings, updating dynamics, etc
     */
     evaluate_pings(pings, ping_number, creatures, creature_number, resources, resource_number, glfwGetTime());
+    calculate_terrain_collision(creatures, creature_number, terrain_coefficients, terrain_width);
     remove_pings(pings, ping_number, glfwGetTime());
 }
 
-void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned int shaderProgram_pingSphere, unsigned int VAO_entity, unsigned int VAO_ping_sphere, float *pings, int *ping_number, float *ping_sphere_vertex_data, int *ping_sphere_vertex_indices, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, const unsigned int screen_width, const unsigned int screen_height, float *prior_t, float *delta_t) {
+void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned int shaderProgram_pingSphere, unsigned int shaderProgram_terrain, unsigned int VAO_entity, unsigned int VAO_ping_sphere, unsigned int VAO_terrain, float *pings, int *ping_number, float *ping_sphere_vertex_data, int *ping_sphere_vertex_indices, int *terrain_x_cells, int *terrain_z_cells, glm::mat4 terrain_coefficients, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, glm::vec3 *camera_origin, float *camera_theta, float *camera_phi, float *camera_fov, const unsigned int screen_width, const unsigned int screen_height, float *prior_t, float *delta_t) {
     // Render CORE
     glfwMakeContextCurrent(core_window);
 
+    calculate_camera_controls(core_window, camera_origin, camera_theta, camera_phi, camera_fov);
     read_keypress_core(core_window, pings, ping_number, creatures);
 
     *delta_t = (glfwGetTime()-*prior_t +0.0000001f);    // **NOTE; +0.0000001f included to prevent /0 errors
@@ -269,9 +363,13 @@ void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned i
     glUseProgram(shaderProgram);    // Uses the shader compiled
 
     glm::mat4 view = glm::mat4(1.0f);           // Init identity matrices
-    glm::mat4 projection = glm::mat4(1.0f);     //
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -25.0f));
-    projection = glm::perspective(glm::radians(45.0f), (float)screen_width / (float)screen_height, 0.1f, 100.0f);
+    view = glm::translate(view, *camera_origin);
+    view = glm::rotate(view, *camera_theta, glm::vec3(0.0f, 0.0f, 1.0f));
+    view = glm::rotate(view, *camera_phi, glm::vec3(0.0f, 1.0f, 0.0f));
+
+    glm::mat4 projection = glm::mat4(1.0f);     // "" ""
+    projection = glm::perspective(glm::radians(*camera_fov), (float)screen_width / (float)screen_height, 0.1f, 100.0f);
+
     glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view) );
     glUniformMatrix4fv( glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection) );
 
@@ -280,14 +378,14 @@ void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned i
         // Update physics for each entity
         creatures[i].directional_thrust(creatures[i].forward_direction, 0.005f);
         float dist = std::max<float>( sqrt( pow(creatures[i].position.x, 2) + pow(creatures[i].position.y, 2) + pow(creatures[i].position.z, 2) ), 0.0000001f);
-        creatures[i].directional_thrust(
-            glm::vec3(
-                -creatures[i].position.x/dist,
-                -creatures[i].position.y/dist,
-                -creatures[i].position.z/dist
-            ), 
-            0.01f
-        );
+        // creatures[i].directional_thrust(
+        //     glm::vec3(
+        //         -creatures[i].position.x/dist,
+        //         -creatures[i].position.y/dist,
+        //         -creatures[i].position.z/dist
+        //     ), 
+        //     0.01f
+        // );
         creatures[i].update_dynamics(*delta_t);
 
         // Draw each entity
@@ -334,6 +432,65 @@ void render_core(GLFWwindow *core_window, unsigned int shaderProgram, unsigned i
 
         // Draws the individual pings -> Referring to index offset
         glDrawElements(GL_TRIANGLES, 24, GL_UNSIGNED_INT, (void*)(0)); // NOTE** Offset set to skip older indices
+    }
+
+    // Draw terrain
+    glUseProgram(shaderProgram_terrain);    // Uses the shader compiled
+    glUniformMatrix4fv( glGetUniformLocation(shaderProgram_terrain, "view"), 1, GL_FALSE, glm::value_ptr(view) );
+    glUniformMatrix4fv( glGetUniformLocation(shaderProgram_terrain, "projection"), 1, GL_FALSE, glm::value_ptr(projection) );
+    glBindVertexArray(VAO_terrain);   // Swaps to the other VAO/EBO needed
+
+    // N threads used; Split threads over the number of rows needing to be rendered
+    // const uint RENDER_THREAD_TOTAL = 4;
+    // const int cells_per_thread = int(floor(float(*terrain_z_cells)/float(RENDER_THREAD_TOTAL)));
+    // #pragma omp parallel num_threads(RENDER_THREAD_TOTAL)
+    // {
+    //     // ###
+    //     // ### WHY IS THE RENDER BREAKING -> ONLY DOING FIRST SECTION??
+    //     // ###
+    //     // ###
+    //     // ### THIS COULD JUST BE QUEUEING UP GPU RENDERING IN PARALLEL, WHICH HAS NO BENEFIT
+    //     // ###  --> FINDING NORMALS IN PARALLEL THEN USING THIS IS PROB BETTER
+    //     // ###
+    //     int thread_index = omp_get_thread_num();
+    //     int z_cell_start = thread_index*cells_per_thread;
+    //     int z_cell_end = (thread_index<RENDER_THREAD_TOTAL-1) ? (thread_index+1)*cells_per_thread : *terrain_z_cells;
+    //     std::cout << "Thread=" << thread_index << ": {" << z_cell_start <<", "<< z_cell_end << "}" <<std::endl;
+    //     for(uint k=z_cell_start; k<z_cell_end; k++) {
+    //         for(uint i=0; i<*terrain_x_cells; i++) {
+    //             glm::mat4 model = glm::mat4(1.0f);
+
+    //             // Set uniforms for each entity
+    //             // ###
+    //             // ### DOES THIS NEED TO BE UPLOADED EACH TIME? -> CAN YOU DO IT ONCE AND IT CARRY OVER
+    //             // ###
+    //             glUniformMatrix4fv( glGetUniformLocation(shaderProgram_terrain, "coefficients"), 1, GL_FALSE, glm::value_ptr(terrain_coefficients) );
+    //             glUniformMatrix4fv( glGetUniformLocation(shaderProgram_terrain, "model"), 1, GL_FALSE, glm::value_ptr(model) );
+    //             // ### ADD ANOTHER UNIFORM FOR THE Z HEIGHT OF THIS PARTICULAR CELL
+
+    //             // Draws the individual pings -> Referring to index offset
+    //             int index_offset = 6*(i +k*(*terrain_x_cells));
+    //             glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)(index_offset*sizeof(float))); // NOTE** Offset set to skip older indices
+    //             // ###
+    //             // ### CHECK GENERATION POINTS EXPLICITLY
+    //             // ### ENSURE IS ALL CORRECT
+    //             // ### DO TEST FOR 2x3 OR SMTHING SMALLER
+    //             // ###
+    //         }
+    //     }
+    // }
+    glUniformMatrix4fv( glGetUniformLocation(shaderProgram_terrain, "coefficients"), 1, GL_FALSE, glm::value_ptr(terrain_coefficients) );
+    for(uint k=0; k<*terrain_z_cells; k++) {
+        for(uint i=0; i<*terrain_x_cells; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+
+            // Set uniforms for each entityNEED TO BE UPLOADED EACH TIME? -> CAN YOU DO IT ONCE AND IT CARRY OVER
+            glUniformMatrix4fv( glGetUniformLocation(shaderProgram_terrain, "model"), 1, GL_FALSE, glm::value_ptr(model) );
+
+            // Draws the individual pings -> Referring to index offset
+            int index_offset = 6*(i +k*(*terrain_x_cells));
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)(index_offset*sizeof(float))); // NOTE** Offset set to skip older indices
+        }
     }
 
     *prior_t = glfwGetTime();
@@ -386,8 +543,8 @@ void populate_creatures(Creature *creatures, const unsigned int creature_number,
             spawn_dimemsions[1]*(0.5f -rand_float(i*creature_number+2))*2,
             spawn_dimemsions[2]*(0.5f -rand_float(i*creature_number+3))*2
         );
-        float dir_theta = 2.0f*3.14f*rand_float(i*creature_number +4);
-        float dir_phi = 1.0f*3.14f*rand_float(i*creature_number +5);
+        float dir_theta = -3.14f*0.5f;//2.0f*3.14f*rand_float(i*creature_number +4);
+        float dir_phi = 3.14f*0.5f;//1.0f*3.14f*rand_float(i*creature_number +5);
         newCreature.forward_direction = glm::vec3(cos(dir_theta)*sin(dir_phi), sin(dir_theta)*sin(dir_phi), cos(dir_phi));
         newCreature.up_direction = glm::vec3(cos(dir_theta)*sin(dir_phi-3.14f/2.0f), sin(dir_theta)*sin(dir_phi-3.14f/2.0f), cos(dir_phi-3.14f/2.0f));
         creatures[i] = newCreature;
@@ -545,6 +702,119 @@ void search_entities_spherical(Entity *entities, const unsigned int entity_numbe
         }
     }
 }
+
+void calculate_terrain_collision(Creature *creatures, const unsigned int creature_number, glm::mat4 terrain_coefficients, float terrain_width) {
+    /*
+    . Calculates which entities are colliding with the terrain
+    . Changes their dyanmics to bounce off the terrain
+    */
+    // ###
+    // ### OMP GOOD HERE
+    // ###
+    // ###
+    // ### MAKE THIS ACTUALLY USE A FRACTION OF THE WIDTH SPECIFIED -> 0.4f
+    // ###
+    const int THREAD_NUM = 4;
+    const float delta_step = terrain_width*0.001f;   // Step used for gradient calculation used in normal calculation
+
+    int elements_per_thread = int(floor(float(creature_number)/float(THREAD_NUM)));
+
+    #pragma omp parallel num_threads(THREAD_NUM)
+    {
+        int thread_index = omp_get_thread_num();
+        int start_index = thread_index*elements_per_thread;
+        int end_index = (thread_index<THREAD_NUM-1) ? (thread_index+1)*elements_per_thread : creature_number;
+        for(int i=start_index; i<end_index; i++) {
+            float terrain_height = terrain_heightmap(creatures[i].position.x, creatures[i].position.z, terrain_coefficients);
+            bool creature_colliding = creatures[i].position.y < terrain_height;
+            if(creature_colliding) {
+                // Move out of terrain
+                creatures[i].position.y = terrain_height;
+                // Find normal
+                float terrain_grad_A = (terrain_heightmap(creatures[i].position.x, creatures[i].position.z, terrain_coefficients) -terrain_heightmap(creatures[i].position.x, creatures[i].position.z +delta_step, terrain_coefficients))/delta_step;  // Calculating a continuous normal for the underlying function, RATHER THAN the grid based approximation visualised
+                float terrain_grad_B = (terrain_heightmap(creatures[i].position.x, creatures[i].position.z, terrain_coefficients) -terrain_heightmap(creatures[i].position.x +delta_step, creatures[i].position.z, terrain_coefficients))/delta_step;  // A & B are two perpendicular vectors along the terrain's local surface
+                glm::vec3 terrain_normal = glm::normalize(
+                    glm::cross(
+                        glm::vec3(delta_step, delta_step*terrain_grad_A, 0.0f),
+                        glm::vec3(0.0f, delta_step*terrain_grad_B, delta_step)
+                    )
+                );  // Unit normal vector
+                // Reflect velocity
+                glm::vec3 velocity_perp = terrain_normal*float(glm::dot(-creatures[i].velocity, terrain_normal) / ( pow(terrain_normal.x, 2) +pow(terrain_normal.y, 2) +pow(terrain_normal.z, 2) ));
+                creatures[i].velocity = (creatures[i].velocity +velocity_perp) +velocity_perp*TERRAIN_REFLECT_FACTOR;
+            }
+        }
+    }
+}
+
+int fetch_terrain_vertex_data_size(int x_cells, int z_cells) { return (x_cells+1)*(z_cells+1)*2; }  // [X,Z,...] point for each vertex (Y given as a uniform)
+int fetch_terrain_vertex_indices_size(int x_cells, int z_cells) { return (x_cells)*(z_cells)*3*2; }  // [I1, I2, I3,...] for each tri (3 indices), 2 tris per square grid, fence post problem for number of squares
+void generate_terrain_vertex_info(int x_cells, int z_cells, float cell_width, float *terrain_vertex_data, int *terrain_vertex_indices) {
+    /*
+    . Generates and populates an empty terrain vertex_data and vertex_indices array with relevent information
+    . This is performed as a 1-time call when the program begins -> the grid does not change after this point
+
+    . x/z_cells = number of cells in the X and Z axes of the grid (its width and depth)
+    . cell_width = float width/depth (square) dimensions for each cell -> resolution for how often the height map will be sampled
+    */
+    // Vertex data
+    for(uint k=0; k<z_cells+1; k++) {
+        for(uint i=0; i<x_cells+1; i++) {
+            terrain_vertex_data[2*(i +k*(x_cells+1))   ] = i*cell_width -(x_cells*cell_width/2.0f);   // X coord
+            terrain_vertex_data[2*(i +k*(x_cells+1)) +1] = k*cell_width -(z_cells*cell_width/2.0f);   // Z coord
+        }
+    }
+
+    // Vertex indices
+    for(uint k=0; k<z_cells; k++) {
+        for(uint i=0; i<x_cells; i++) {
+            // For each cell, add 6 elements (2 triangles) in order
+            // NOTE** x_cells+1 used since X posts=>X+1 vertices per layer
+            terrain_vertex_indices[6*(i +k*x_cells) +0] = i +k*(x_cells+1);                 //  0|*
+            terrain_vertex_indices[6*(i +k*x_cells) +1] = i +k*(x_cells+1) +(x_cells+1);    //   | *
+            terrain_vertex_indices[6*(i +k*x_cells) +2] = i +k*(x_cells+1) +(x_cells+1) +1; //  1|__*_2
+
+            terrain_vertex_indices[6*(i +k*x_cells) +3] = i +k*(x_cells+1) +(x_cells+1) +1; //  4-*--|5
+            terrain_vertex_indices[6*(i +k*x_cells) +4] = i +k*(x_cells+1);                 //     * |
+            terrain_vertex_indices[6*(i +k*x_cells) +5] = i +k*(x_cells+1) +1;              //      *|3
+        }
+    }
+}
+void generate_terrain_coefficients(int matrix_width, glm::mat4 *coefficient_matrix, int seed) {
+    /*
+    . Coefficients for a terrain height map
+    . Set once at the start (NOT re-generated)
+    */
+    // ###
+    // ### Only works for 4x4 matricies for now -> Not a pressing issue to generalise this
+    // ###
+    for(int j=0; j<matrix_width; j++) {
+        for(int i=0; i<matrix_width; i++) {
+            // (*coefficient_matrix)[j][i] = rand_float(seed +i +j*matrix_width);  // Each in range (0,1)
+            (*coefficient_matrix)[j][i] = 0.2f;  // Each in range (0,1)
+        }
+    }
+}
+
+float terrain_heightmap(float x, float z, glm::mat4 terrain_coefficients) {
+    /*
+    . Height map used to generate/render terrain
+    . Is continuous, but sampled on a grid
+
+    NOTE; This is must MANUALLY be set to calculate the height map the SAME as the shader being used for the terrain, otherwise 
+        visuals and collision will disagree.
+    */
+    float height = 0.0f;
+    for(int i=0; i<16; i++) {   // 16 for 4x4 matrix elements
+        if(i%2==0) {
+            height += terrain_coefficients[int(floor(float(i)/4.0f))][i%4]*sin( i*3.14f*x*0.04f )*0.35f;
+        } else {
+            height += terrain_coefficients[int(floor(float(i)/4.0f))][i%4]*sin( i*3.14f*z*0.04f )*0.35f;
+        }
+    }
+    return height;
+}
+
 
 float rand_float(int seed_offset) {
     /*

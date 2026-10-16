@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o"
+  "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o.d"
   "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o"
   "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o.d"
   "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o"
