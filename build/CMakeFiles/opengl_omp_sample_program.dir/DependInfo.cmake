@@ -9,9 +9,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/core_manager.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/hud_manager.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o.d"

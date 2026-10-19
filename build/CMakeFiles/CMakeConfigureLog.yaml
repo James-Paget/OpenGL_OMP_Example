@@ -2247,3 +2247,483 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Gx6vee"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Gx6vee"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Gx6vee'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_973eb/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_973eb.dir/build.make CMakeFiles/cmTC_973eb.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Gx6vee'
+        Building C object CMakeFiles/cmTC_973eb.dir/test_mpi.c.o
+        /usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_973eb.dir/test_mpi.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Gx6vee/test_mpi.c
+        Linking C executable cmTC_973eb
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_973eb.dir/link.txt --verbose=1
+        /usr/bin/gcc CMakeFiles/cmTC_973eb.dir/test_mpi.c.o -o cmTC_973eb  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Gx6vee'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-mwcQFW"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-mwcQFW"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-mwcQFW'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_48e6c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_48e6c.dir/build.make CMakeFiles/cmTC_48e6c.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-mwcQFW'
+        Building CXX object CMakeFiles/cmTC_48e6c.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_48e6c.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-mwcQFW/test_mpi.cpp
+        Linking CXX executable cmTC_48e6c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48e6c.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_48e6c.dir/test_mpi.cpp.o -o cmTC_48e6c  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-mwcQFW'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-N3r2Ln"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-N3r2Ln"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-N3r2Ln'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ef4f4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ef4f4.dir/build.make CMakeFiles/cmTC_ef4f4.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-N3r2Ln'
+        Building CXX object CMakeFiles/cmTC_ef4f4.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_ef4f4.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-N3r2Ln/test_mpi.cpp
+        Linking CXX executable cmTC_ef4f4
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef4f4.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_ef4f4.dir/test_mpi.cpp.o -o cmTC_ef4f4  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-N3r2Ln'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-vghEhE"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-vghEhE"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-vghEhE'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8f411/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8f411.dir/build.make CMakeFiles/cmTC_8f411.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-vghEhE'
+        Building C object CMakeFiles/cmTC_8f411.dir/test_mpi.c.o
+        /usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_8f411.dir/test_mpi.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-vghEhE/test_mpi.c
+        Linking C executable cmTC_8f411
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8f411.dir/link.txt --verbose=1
+        /usr/bin/gcc CMakeFiles/cmTC_8f411.dir/test_mpi.c.o -o cmTC_8f411  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-vghEhE'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-qMauXv"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-qMauXv"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-qMauXv'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8024f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8024f.dir/build.make CMakeFiles/cmTC_8024f.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-qMauXv'
+        Building CXX object CMakeFiles/cmTC_8024f.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_8024f.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-qMauXv/test_mpi.cpp
+        Linking CXX executable cmTC_8024f
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8024f.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_8024f.dir/test_mpi.cpp.o -o cmTC_8024f  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-qMauXv'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-gSPSvj"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-gSPSvj"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-gSPSvj'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ff8b8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ff8b8.dir/build.make CMakeFiles/cmTC_ff8b8.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-gSPSvj'
+        Building CXX object CMakeFiles/cmTC_ff8b8.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_ff8b8.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-gSPSvj/test_mpi.cpp
+        Linking CXX executable cmTC_ff8b8
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff8b8.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_ff8b8.dir/test_mpi.cpp.o -o cmTC_ff8b8  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-gSPSvj'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-ei5TlW"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-ei5TlW"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-ei5TlW'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ac7a4/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ac7a4.dir/build.make CMakeFiles/cmTC_ac7a4.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-ei5TlW'
+        Building C object CMakeFiles/cmTC_ac7a4.dir/test_mpi.c.o
+        /usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_ac7a4.dir/test_mpi.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-ei5TlW/test_mpi.c
+        Linking C executable cmTC_ac7a4
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac7a4.dir/link.txt --verbose=1
+        /usr/bin/gcc CMakeFiles/cmTC_ac7a4.dir/test_mpi.c.o -o cmTC_ac7a4  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-ei5TlW'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CXRTCa"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CXRTCa"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CXRTCa'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_08413/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_08413.dir/build.make CMakeFiles/cmTC_08413.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CXRTCa'
+        Building CXX object CMakeFiles/cmTC_08413.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_08413.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CXRTCa/test_mpi.cpp
+        Linking CXX executable cmTC_08413
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_08413.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_08413.dir/test_mpi.cpp.o -o cmTC_08413  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CXRTCa'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CjR2ST"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CjR2ST"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CjR2ST'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d6c1b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d6c1b.dir/build.make CMakeFiles/cmTC_d6c1b.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CjR2ST'
+        Building CXX object CMakeFiles/cmTC_d6c1b.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_d6c1b.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CjR2ST/test_mpi.cpp
+        Linking CXX executable cmTC_d6c1b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6c1b.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_d6c1b.dir/test_mpi.cpp.o -o cmTC_d6c1b  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-CjR2ST'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-BQmR62"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-BQmR62"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-BQmR62'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bf03d/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bf03d.dir/build.make CMakeFiles/cmTC_bf03d.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-BQmR62'
+        Building C object CMakeFiles/cmTC_bf03d.dir/test_mpi.c.o
+        /usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_bf03d.dir/test_mpi.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-BQmR62/test_mpi.c
+        Linking C executable cmTC_bf03d
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bf03d.dir/link.txt --verbose=1
+        /usr/bin/gcc CMakeFiles/cmTC_bf03d.dir/test_mpi.c.o -o cmTC_bf03d  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-BQmR62'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-RPLuzZ"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-RPLuzZ"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-RPLuzZ'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_675ab/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_675ab.dir/build.make CMakeFiles/cmTC_675ab.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-RPLuzZ'
+        Building CXX object CMakeFiles/cmTC_675ab.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_675ab.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-RPLuzZ/test_mpi.cpp
+        Linking CXX executable cmTC_675ab
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_675ab.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_675ab.dir/test_mpi.cpp.o -o cmTC_675ab  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-RPLuzZ'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-A53uFa"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-A53uFa"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-A53uFa'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_391fe/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_391fe.dir/build.make CMakeFiles/cmTC_391fe.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-A53uFa'
+        Building CXX object CMakeFiles/cmTC_391fe.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_391fe.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-A53uFa/test_mpi.cpp
+        Linking CXX executable cmTC_391fe
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_391fe.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_391fe.dir/test_mpi.cpp.o -o cmTC_391fe  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-A53uFa'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-VIlAg6"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-VIlAg6"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-VIlAg6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e5641/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e5641.dir/build.make CMakeFiles/cmTC_e5641.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-VIlAg6'
+        Building C object CMakeFiles/cmTC_e5641.dir/test_mpi.c.o
+        /usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_e5641.dir/test_mpi.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-VIlAg6/test_mpi.c
+        Linking C executable cmTC_e5641
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5641.dir/link.txt --verbose=1
+        /usr/bin/gcc CMakeFiles/cmTC_e5641.dir/test_mpi.c.o -o cmTC_e5641  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-VIlAg6'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-1C2Iy6"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-1C2Iy6"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-1C2Iy6'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f23ef/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f23ef.dir/build.make CMakeFiles/cmTC_f23ef.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-1C2Iy6'
+        Building CXX object CMakeFiles/cmTC_f23ef.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_f23ef.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-1C2Iy6/test_mpi.cpp
+        Linking CXX executable cmTC_f23ef
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f23ef.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_f23ef.dir/test_mpi.cpp.o -o cmTC_f23ef  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-1C2Iy6'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:7 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Ro1SqK"
+      binary: "/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Ro1SqK"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Ro1SqK'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9804a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9804a.dir/build.make CMakeFiles/cmTC_9804a.dir/build
+        gmake[1]: Entering directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Ro1SqK'
+        Building CXX object CMakeFiles/cmTC_9804a.dir/test_mpi.cpp.o
+        /usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_9804a.dir/test_mpi.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Ro1SqK/test_mpi.cpp
+        Linking CXX executable cmTC_9804a
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9804a.dir/link.txt --verbose=1
+        /usr/bin/g++ CMakeFiles/cmTC_9804a.dir/test_mpi.cpp.o -o cmTC_9804a  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/james-paget/Desktop/OpenGL_OMP_Example/build/CMakeFiles/CMakeScratch/TryCompile-Ro1SqK'
+        
+      exitCode: 0
+...

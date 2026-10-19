@@ -20,9 +20,6 @@ int main(int argc, char *argv[]) {
     core_window = glfwCreateWindow(screen_width, screen_height, "CORE", NULL, NULL);
     hud_window = glfwCreateWindow(screen_width, screen_height>>1, "HUD", NULL, NULL);
     glfwMakeContextCurrent(core_window);
-    // ###
-    // ### DOES THIS NEED DETATCHING FIRST?
-    // ###
 
     // **NOTE; Must be done AFTER GLFW initialised (hence must terminate too if there is an error)
     if( !gladLoadGLLoader((GLADloadproc) glfwGetProcAddress) ) {        // Loading GLAD info, else leave with error code
@@ -38,6 +35,9 @@ int main(int argc, char *argv[]) {
 }
 
 // ### (1) Add HUD elements --> Split into 2 separate files for CORE vs HUD
+//          --> Dynamic vertex buffers for graphs?
+//          Display bar graph for each status of each creature
+//          Ping counter display
 // ### (2) Ballistic throwing setup
 
 // ### (3) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)

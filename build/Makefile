@@ -129,6 +129,54 @@ opengl_omp_sample_program/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/build
 .PHONY : opengl_omp_sample_program/fast
 
+src/Graphical_Elements/ge_bar.o: src/Graphical_Elements/ge_bar.cpp.o
+.PHONY : src/Graphical_Elements/ge_bar.o
+
+# target to build an object file
+src/Graphical_Elements/ge_bar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o
+.PHONY : src/Graphical_Elements/ge_bar.cpp.o
+
+src/Graphical_Elements/ge_bar.i: src/Graphical_Elements/ge_bar.cpp.i
+.PHONY : src/Graphical_Elements/ge_bar.i
+
+# target to preprocess a source file
+src/Graphical_Elements/ge_bar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.i
+.PHONY : src/Graphical_Elements/ge_bar.cpp.i
+
+src/Graphical_Elements/ge_bar.s: src/Graphical_Elements/ge_bar.cpp.s
+.PHONY : src/Graphical_Elements/ge_bar.s
+
+# target to generate assembly for a file
+src/Graphical_Elements/ge_bar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.s
+.PHONY : src/Graphical_Elements/ge_bar.cpp.s
+
+src/Graphical_Elements/graphical_element.o: src/Graphical_Elements/graphical_element.cpp.o
+.PHONY : src/Graphical_Elements/graphical_element.o
+
+# target to build an object file
+src/Graphical_Elements/graphical_element.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o
+.PHONY : src/Graphical_Elements/graphical_element.cpp.o
+
+src/Graphical_Elements/graphical_element.i: src/Graphical_Elements/graphical_element.cpp.i
+.PHONY : src/Graphical_Elements/graphical_element.i
+
+# target to preprocess a source file
+src/Graphical_Elements/graphical_element.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.i
+.PHONY : src/Graphical_Elements/graphical_element.cpp.i
+
+src/Graphical_Elements/graphical_element.s: src/Graphical_Elements/graphical_element.cpp.s
+.PHONY : src/Graphical_Elements/graphical_element.s
+
+# target to generate assembly for a file
+src/Graphical_Elements/graphical_element.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.s
+.PHONY : src/Graphical_Elements/graphical_element.cpp.s
+
 src/camera_controls.o: src/camera_controls.cpp.o
 .PHONY : src/camera_controls.o
 
@@ -152,6 +200,30 @@ src/camera_controls.s: src/camera_controls.cpp.s
 src/camera_controls.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.s
 .PHONY : src/camera_controls.cpp.s
+
+src/core_manager.o: src/core_manager.cpp.o
+.PHONY : src/core_manager.o
+
+# target to build an object file
+src/core_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o
+.PHONY : src/core_manager.cpp.o
+
+src/core_manager.i: src/core_manager.cpp.i
+.PHONY : src/core_manager.i
+
+# target to preprocess a source file
+src/core_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.i
+.PHONY : src/core_manager.cpp.i
+
+src/core_manager.s: src/core_manager.cpp.s
+.PHONY : src/core_manager.s
+
+# target to generate assembly for a file
+src/core_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.s
+.PHONY : src/core_manager.cpp.s
 
 src/creature.o: src/creature.cpp.o
 .PHONY : src/creature.o
@@ -224,6 +296,30 @@ src/glad.s: src/glad.c.s
 src/glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.s
 .PHONY : src/glad.c.s
+
+src/hud_manager.o: src/hud_manager.cpp.o
+.PHONY : src/hud_manager.o
+
+# target to build an object file
+src/hud_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.o
+.PHONY : src/hud_manager.cpp.o
+
+src/hud_manager.i: src/hud_manager.cpp.i
+.PHONY : src/hud_manager.i
+
+# target to preprocess a source file
+src/hud_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.i
+.PHONY : src/hud_manager.cpp.i
+
+src/hud_manager.s: src/hud_manager.cpp.s
+.PHONY : src/hud_manager.s
+
+# target to generate assembly for a file
+src/hud_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.s
+.PHONY : src/hud_manager.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -306,9 +402,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... opengl_omp_sample_program"
+	@echo "... src/Graphical_Elements/ge_bar.o"
+	@echo "... src/Graphical_Elements/ge_bar.i"
+	@echo "... src/Graphical_Elements/ge_bar.s"
+	@echo "... src/Graphical_Elements/graphical_element.o"
+	@echo "... src/Graphical_Elements/graphical_element.i"
+	@echo "... src/Graphical_Elements/graphical_element.s"
 	@echo "... src/camera_controls.o"
 	@echo "... src/camera_controls.i"
 	@echo "... src/camera_controls.s"
+	@echo "... src/core_manager.o"
+	@echo "... src/core_manager.i"
+	@echo "... src/core_manager.s"
 	@echo "... src/creature.o"
 	@echo "... src/creature.i"
 	@echo "... src/creature.s"
@@ -318,6 +423,9 @@ help:
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
+	@echo "... src/hud_manager.o"
+	@echo "... src/hud_manager.i"
+	@echo "... src/hud_manager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

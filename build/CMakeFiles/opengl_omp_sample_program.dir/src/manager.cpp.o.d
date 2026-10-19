@@ -408,4 +408,8 @@ CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o: \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.h \
  /usr/include/GLFW/glfw3.h \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/hud_manager.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/core_manager.h \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/simulation_consts.h

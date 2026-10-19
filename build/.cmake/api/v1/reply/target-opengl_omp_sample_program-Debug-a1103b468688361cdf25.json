@@ -38,7 +38,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 28,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
@@ -137,7 +137,11 @@
 				6,
 				8,
 				10,
-				12
+				12,
+				14,
+				16,
+				18,
+				20
 			]
 		},
 		{
@@ -241,7 +245,11 @@
 				6,
 				8,
 				10,
-				12
+				12,
+				14,
+				16,
+				18,
+				20
 			]
 		},
 		{
@@ -255,8 +263,12 @@
 				9,
 				11,
 				13,
-				14,
-				15
+				15,
+				17,
+				19,
+				21,
+				22,
+				23
 			]
 		}
 	],
@@ -288,6 +300,28 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/manager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/core_manager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/core_manager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/hud_manager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/hud_manager.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -332,6 +366,28 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/creature.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Graphical_Elements/graphical_element.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Graphical_Elements/graphical_element.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Graphical_Elements/ge_bar.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/Graphical_Elements/ge_bar.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

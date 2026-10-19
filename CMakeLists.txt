@@ -12,6 +12,10 @@ add_executable(opengl_omp_sample_program
     src/glad.c
     src/manager.h
     src/manager.cpp
+    src/core_manager.h
+    src/core_manager.cpp
+    src/hud_manager.h
+    src/hud_manager.cpp
     src/camera_controls.h
     src/camera_controls.cpp
     src/entity.h
@@ -20,6 +24,10 @@ add_executable(opengl_omp_sample_program
     src/resource.cpp
     src/creature.h
     src/creature.cpp
+    src/Graphical_Elements/graphical_element.h
+    src/Graphical_Elements/graphical_element.cpp
+    src/Graphical_Elements/ge_bar.h
+    src/Graphical_Elements/ge_bar.cpp
     src/glm/glm.hpp
     src/glm/gtc/matrix_transform.hpp
     src/glm/gtc/type_ptr.hpp

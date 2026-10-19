@@ -8,6 +8,8 @@
 
 #include "manager.h"
 #include "camera_controls.h"
+#include "hud_manager.h"
+#include "core_manager.h"
 #include "simulation_consts.h"
 
 
@@ -188,6 +190,8 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     populate_creatures(creatures, creature_number, spawn_dimensions);
     populate_resources(resources, resource_number, spawn_dimensions);
 
+    glfwMakeContextCurrent(core_window);
+
     // Setup shaders + OpenGL arrays
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
@@ -315,6 +319,15 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     glEnableVertexAttribArray(0);
 
 
+    Core_Manager _core_manager = Core_Manager();
+    glfwMakeContextCurrent(hud_window);
+    HUD_Manager _hud_manager = HUD_Manager();
+
+    _core_manager.setup();  // Initialises buffers and shaders
+    _hud_manager.setup();   //
+
+    glfwMakeContextCurrent(core_window);
+
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  // Fill the face of drawn VAOs, not wireframe, and colour the backs too
 
     // Render
@@ -328,7 +341,8 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     while( !glfwWindowShouldClose(core_window) && !glfwWindowShouldClose(hud_window) ) {
         calculate_entities(pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, terrain_coefficients, cell_width, creatures, creature_number, resources, resource_number, &prior_t);
         render_core(core_window, shaderProgram, shaderProgram_pingSphere, shaderProgram_terrain, VAO_entity, VAO_ping_sphere, VAO_terrain, pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, &x_cells, &z_cells, terrain_coefficients, creatures, creature_number, resources, resource_number, &camera_origin, &camera_theta, &camera_phi, &camera_fov, screen_width, screen_height, &prior_t, &delta_t);
-        render_hud(hud_window, shaderProgram, VAO_entity, creatures, creature_number, screen_width, screen_height);
+        // render_hud(hud_window, shaderProgram, VAO_entity, creatures, creature_number, screen_width, screen_height);
+        _hud_manager.render(hud_window);
         // Once-per frame
         glfwPollEvents();
     }
