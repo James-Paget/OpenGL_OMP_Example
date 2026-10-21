@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o.d"
+  "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o.d"
   "/home/james-paget/Desktop/OpenGL_OMP_Example/src/core_manager.cpp" "CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o" "gcc" "CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o.d"

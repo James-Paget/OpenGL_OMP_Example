@@ -28,6 +28,8 @@ add_executable(opengl_omp_sample_program
     src/Graphical_Elements/graphical_element.cpp
     src/Graphical_Elements/ge_bar.h
     src/Graphical_Elements/ge_bar.cpp
+    src/Graphical_Elements/ge_linegraph.h
+    src/Graphical_Elements/ge_linegraph.cpp
     src/glm/glm.hpp
     src/glm/gtc/matrix_transform.hpp
     src/glm/gtc/type_ptr.hpp

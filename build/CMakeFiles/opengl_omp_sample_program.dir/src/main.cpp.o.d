@@ -391,4 +391,60 @@ CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o: \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/integer.hpp \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/glm/detail/func_integer.inl \
  /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.h \
- /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.h
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/hud_manager.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.h \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/matrix_transform.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/matrix_projection.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/../gtc/constants.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/../gtc/constants.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/matrix_projection.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/matrix_clip_space.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/matrix_clip_space.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/matrix_transform.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../ext/matrix_transform.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/matrix_transform.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/type_ptr.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/quaternion.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_relational.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_relational.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../detail/type_float.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../detail/setup.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_common.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_common.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_float.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/../detail/type_quat.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_double.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_transform.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/quaternion_transform.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/quaternion.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/epsilon.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../detail/setup.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/epsilon.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/vec1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_float1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_double1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_int1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
+ /usr/include/c++/13/cstring \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/../glm/gtc/type_ptr.inl \
+ /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.h

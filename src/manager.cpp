@@ -339,7 +339,44 @@ void manage_simulation_main(GLFWwindow *core_window, GLFWwindow *hud_window, uns
     float prior_t = glfwGetTime();   // Time on previous frame
     float delta_t = 0.016f;   // Time between rendered frames -> ~0.016 for 60fps (UPDATED every frame anyway, initialised as this to prevent delta_t=0.0f errors)
     while( !glfwWindowShouldClose(core_window) && !glfwWindowShouldClose(hud_window) ) {
+        if(glfwGetKey(hud_window, GLFW_KEY_3) == GLFW_PRESS) {
+            if( dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->bar_values[0] != 5.0f ) {
+                std::cout << "ADDING VALUE -> ONLY ACTIVATE THIS ONCE" << std::endl;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->bar_values[0] = 5.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->bar_values[1] = 10.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->bar_values[2] = 2.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->bar_values[3] = 7.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->number_of_values = dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->number_of_values +4;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->generate_vertex_info();
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[0])->setup_refresh();
+
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->bar_values[0] = 2.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->bar_values[1] = 2.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->bar_values[2] = 2.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->bar_values[3] = 6.0f;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->number_of_values = dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->number_of_values +4;
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->generate_vertex_info();
+                dynamic_cast<GE_Bar*>(_hud_manager.graphical_elements[1])->setup_refresh();
+
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_x.push_back(1.0f);    //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_x.push_back(2.0f);    //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_x.push_back(3.0f);    //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_x.push_back(5.0f);    //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_x.push_back(7.0f);    //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_x.push_back(10.0f);   //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_y.push_back(2.0f);        //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_y.push_back(3.0f);        //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_y.push_back(4.5f);        //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_y.push_back(1.0f);        //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_y.push_back(6.5f);        //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->data_y.push_back(10.0f);       //
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->generate_vertex_info();
+                dynamic_cast<GE_Linegraph*>(_hud_manager.graphical_elements[2])->setup_refresh();
+            }
+        }
+        refresh_hud(&(_hud_manager), creature_number, creatures, glfwGetTime());
         calculate_entities(pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, terrain_coefficients, cell_width, creatures, creature_number, resources, resource_number, &prior_t);
+        
         render_core(core_window, shaderProgram, shaderProgram_pingSphere, shaderProgram_terrain, VAO_entity, VAO_ping_sphere, VAO_terrain, pings, &ping_number, ping_sphere_vertex_data, ping_sphere_vertex_indices, &x_cells, &z_cells, terrain_coefficients, creatures, creature_number, resources, resource_number, &camera_origin, &camera_theta, &camera_phi, &camera_fov, screen_width, screen_height, &prior_t, &delta_t);
         // render_hud(hud_window, shaderProgram, VAO_entity, creatures, creature_number, screen_width, screen_height);
         _hud_manager.render(hud_window);
@@ -827,6 +864,49 @@ float terrain_heightmap(float x, float z, glm::mat4 terrain_coefficients) {
         }
     }
     return height;
+}
+
+
+void refresh_hud(HUD_Manager *_hud_manager, const unsigned int creature_number, Creature *creatures, float time) {
+    /*
+    . Updates the statistics used by the HUD
+    */
+    if(time -_hud_manager->prior_refresh_time >= _hud_manager->refresh_rate) {
+        _hud_manager->prior_refresh_time = time;
+
+        // Collect data
+        // (0)
+        float bar_entityId_data[2] = {0,0};
+        for(int i=0; i<creature_number; i++) {
+            switch (creatures[i].id) {
+                case 0:
+                    bar_entityId_data[0] = bar_entityId_data[0]+1;
+                    break;
+                case 1:
+                    bar_entityId_data[1] = bar_entityId_data[1]+1;
+                    break;
+            }
+        }
+
+        // (1)
+        float bar_randomTest_data[5] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
+
+        // (2)
+        dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_x.push_back(time);
+        dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_y.push_back(5.0f*rand_float(time));
+        if( dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_x.size() >= 10 ) {     //dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->DATA_LIMIT_MAX
+            dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_x.erase(dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_x.begin());
+            dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_y.erase(dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_y.begin());
+        }
+        dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->x_scale_end = time;
+        dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->x_scale_start = dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->data_x[0];
+
+        // Send data
+        // NOTE*; Each chart needs specific tailored data, hence must be manually assigned for each => assume knowledge of which index is which sub-class type while casting
+        dynamic_cast<GE_Bar*>(_hud_manager->graphical_elements[0])->refresh_data(bar_entityId_data, 2); // Bar - Entity IDs
+        dynamic_cast<GE_Bar*>(_hud_manager->graphical_elements[1])->refresh_data(bar_randomTest_data, 5); // Bar - ...
+        dynamic_cast<GE_Linegraph*>(_hud_manager->graphical_elements[2])->refresh_data(nullptr, nullptr, 0); // Linegraph - ...
+    }
 }
 
 

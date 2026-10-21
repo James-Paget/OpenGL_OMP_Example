@@ -34,18 +34,16 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-// ### (1) Add HUD elements --> Split into 2 separate files for CORE vs HUD
-//          --> Dynamic vertex buffers for graphs?
-//          Display bar graph for each status of each creature
-//          Ping counter display
-// ### (2) Ballistic throwing setup
 
-// ### (3) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
-// ### (4) More controlled pings for testing
+// ### (1) Models + textures + lighting for OpenGL
+// ### (2) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
+
+// ### (3) Ballistic throwing setup / talking to eachother
+// ### (4) Increase resolution of the ping sphere
+
+// ### (5) More controlled pings for testing
 // ###  --> Fix issue with ping triggering resources far away
 
-// ### (5) Clean program structure up in general -> removal experimental testing and messy layout + group blocks that are now working correctly
-// ### (6) Write a file read-write system for reading shader files -> cleaner, keep separate
-// ### (7) Ballistic throwing to move found resources / harvest them
-
-// ### (8) Lighting + textures + better ground generation formula
+// ### (6) Clean program structure up in general -> removal experimental testing and messy layout + group blocks that are now working correctly
+// ### (7) Write a file read-write system for reading shader files -> cleaner, keep separate
+// ### (8) Ballistic throwing to move found resources / harvest them

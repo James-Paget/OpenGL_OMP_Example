@@ -3,6 +3,8 @@
 #include "resource.h"
 #include "GLFW/glfw3.h"
 
+#include "hud_manager.h"
+
 #ifndef MANAGER_H
 #define MANAGER_H
 
@@ -29,6 +31,8 @@ int fetch_terrain_vertex_indices_size(int x_cells, int z_cells);
 void generate_terrain_vertex_info(int x_cells, int z_cells, float cell_width, float *terrain_vertex_data, int *terrain_vertex_indices);
 void generate_terrain_coefficients(int matrix_width, glm::mat4 *coefficient_matrix, int seed);
 float terrain_heightmap(float x, float z, glm::mat4 terrain_coefficients);
+
+void refresh_hud(HUD_Manager *_hud_manager, const unsigned int creature_number, Creature *creatures, float time);
 
 float rand_float(int seed_offset);
 

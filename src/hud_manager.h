@@ -2,6 +2,7 @@
 #include "vector"
 
 #include "Graphical_Elements/ge_bar.h"
+#include "Graphical_Elements/ge_linegraph.h"
 
 #ifndef HUD_MANAGER_H
 #define HUD_MANAGER_H
@@ -13,18 +14,12 @@ class HUD_Manager {
     . All relevent shaders, buffers, etc are stored indepently in each window manager class (Core, HUD, etc)
     */
     public:
-        // std::vector<Graphical_Element>
-        // ###
-        // ### Store pointers to the class
-        // ### When populating this in a function DYNAMICALL ALLOCATE the memory by using 'new' --> Makes space for it rather than leaving it on the stack
-        // ###
-        // ###      BUT this means the dynamically allocated memory has to be deleted manually after use
-        // ###          E.g. 'obj_ptr delete' will remove the data at the pointer (e.g. if you remove one of these pointers from the list it will need to delete what it left or you will have memory leaks)
-        // ###      -> YOU SHOULD PROBABLY HAVE A DESTRUCTOR CLASS FUNC TOO
-        // ###
-        GE_Bar *element_ge_bar = new GE_Bar( glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.2f, 0.5f, 0.0f) );
+        const float refresh_rate = 2.0f;     // Time between HUD refreshes
+        float prior_refresh_time = -refresh_rate;   // What time (glfwGetTime()) was the HUD previously updated on
+        Graphical_Element *graphical_elements[3];
 
         HUD_Manager();
+        ~HUD_Manager();
         void setup();
         void render(GLFWwindow *window);
     private:

@@ -153,6 +153,30 @@ src/Graphical_Elements/ge_bar.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.s
 .PHONY : src/Graphical_Elements/ge_bar.cpp.s
 
+src/Graphical_Elements/ge_linegraph.o: src/Graphical_Elements/ge_linegraph.cpp.o
+.PHONY : src/Graphical_Elements/ge_linegraph.o
+
+# target to build an object file
+src/Graphical_Elements/ge_linegraph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o
+.PHONY : src/Graphical_Elements/ge_linegraph.cpp.o
+
+src/Graphical_Elements/ge_linegraph.i: src/Graphical_Elements/ge_linegraph.cpp.i
+.PHONY : src/Graphical_Elements/ge_linegraph.i
+
+# target to preprocess a source file
+src/Graphical_Elements/ge_linegraph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.i
+.PHONY : src/Graphical_Elements/ge_linegraph.cpp.i
+
+src/Graphical_Elements/ge_linegraph.s: src/Graphical_Elements/ge_linegraph.cpp.s
+.PHONY : src/Graphical_Elements/ge_linegraph.s
+
+# target to generate assembly for a file
+src/Graphical_Elements/ge_linegraph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.s
+.PHONY : src/Graphical_Elements/ge_linegraph.cpp.s
+
 src/Graphical_Elements/graphical_element.o: src/Graphical_Elements/graphical_element.cpp.o
 .PHONY : src/Graphical_Elements/graphical_element.o
 
@@ -405,6 +429,9 @@ help:
 	@echo "... src/Graphical_Elements/ge_bar.o"
 	@echo "... src/Graphical_Elements/ge_bar.i"
 	@echo "... src/Graphical_Elements/ge_bar.s"
+	@echo "... src/Graphical_Elements/ge_linegraph.o"
+	@echo "... src/Graphical_Elements/ge_linegraph.i"
+	@echo "... src/Graphical_Elements/ge_linegraph.s"
 	@echo "... src/Graphical_Elements/graphical_element.o"
 	@echo "... src/Graphical_Elements/graphical_element.i"
 	@echo "... src/Graphical_Elements/graphical_element.s"

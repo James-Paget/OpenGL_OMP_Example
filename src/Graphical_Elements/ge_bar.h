@@ -5,13 +5,25 @@
 
 class GE_Bar : public Graphical_Element {
     public:
-        //pass
+        // Origin at centre of bar
+        // Dimensions = Full width/height
+        static const uint VALUE_MAXIMUM = 10;   // Maximum of 10 different values per bar figure
+        float bar_values[VALUE_MAXIMUM];        // The different values making up the bar's total
+        int number_of_values = 0;               // How many values are currently being tracked
 
         GE_Bar(glm::vec3 origin, glm::vec3 dimensions);
-        void setup();
-        void assign_shader();
-        void bind_VAO();
-        void render();
+        ~GE_Bar();
+        void setup_full() override;
+        void setup_shader();
+        void setup_refresh();
+        void generate_vertex_info();
+        void assign_shader() override;
+        void bind_VAO() override;
+        void render() override;
+
+        void refresh_data(float *input_bar_values, int length);
+
+        void print_vertex_info();
     private:
         const char *vertex_shader_GE_BAR_H = "#version 330 core\n"
             "layout (location = 0) in vec3 aPos;\n"
@@ -22,36 +34,19 @@ class GE_Bar : public Graphical_Element {
 
         const char *fragment_shader_GE_BAR_H = "#version 330 core\n"
             "out vec4 FragColor;\n"
+            "uniform vec3 sectorColour;\n"
             "void main()\n"
             "{\n"
-            "   FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);\n"
+            "   FragColor = vec4(sectorColour, 1.0f);\n"
             "}\0";
 
-        unsigned int shaderProgram = 0;         // Initialised to 0 to check are being corretcly assigned -> Was getting seg.faults possibly due to this
-        unsigned int vertexShaderID = 0;    // ### THESE GET DELETED ANYWAY SO CAN PROB JUST BE LOCAL TO setup() ###
-        unsigned int fragmentShaderID = 0;  // ###
+        unsigned int shaderProgram = 0;         // Initialised to 0 to check are being corretcly assigned -> Was getting seg.faults due to this + window context
         unsigned int VBO = 0;
         unsigned int VAO = 0;
         unsigned int EBO = 0;
 
-        float vertex_data[12] = {
-            -0.25f,  0.25f, 0.0f,
-             0.25f,  0.25f, 0.0f,
-            -0.25f, -0.25f, 0.0f,
-             0.25f, -0.25f, 0.0f
-        };
-        // ###
-        // ### TRY USE DIMENSIONS HERE -> WILL THEY INITIALISE AT THE SAME TIME AND WORK??
-        // ###
-        // ###  ALSO INTELLI-SENSE SEEMS TO BE BREAKING HERE -> TRY FIX
-        // ###
-        // ######
-        // ### CHANGE TO DYNAMIC DRAW IN SETUP AFTER THE STATIC TEST
-        // ######
-        int vertex_indices[6] = {
-            0, 1, 2,
-            2, 3, 4
-        };
+        float vertex_data[6*(VALUE_MAXIMUM+1)];
+        int vertex_indices[6*VALUE_MAXIMUM];
 };
 
 #endif

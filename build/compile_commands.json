@@ -64,5 +64,11 @@
   "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o"
 }
 ]
