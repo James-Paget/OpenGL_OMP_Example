@@ -19,6 +19,7 @@ void GE_Linegraph::setup_full() {
 void GE_Linegraph::setup_shader() {
     unsigned int vertexShaderID;
     unsigned int fragmentShaderID;
+    
     shaderProgram = glCreateProgram();
     vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShaderID, 1, &vertex_shader_GE_LINEGRAPH_H, NULL);
@@ -74,7 +75,6 @@ void GE_Linegraph::generate_vertex_info() {
         for(int i=0; i<data_x.size(); i++) {
             // ###
             // ### CHECK INBOUNDS OF FIGURE
-            // ###
             // ### CHECK IN BOUNDS OF VERTEX LIMIT
             // ###
             vertex_data[9 +3*i   ] = origin.x +(data_x[i]-x_scale_start)*(dimensions.x/(x_scale_end-x_scale_start));

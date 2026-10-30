@@ -273,6 +273,30 @@ src/creature.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.s
 .PHONY : src/creature.cpp.s
 
+src/custom_random.o: src/custom_random.cpp.o
+.PHONY : src/custom_random.o
+
+# target to build an object file
+src/custom_random.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/custom_random.cpp.o
+.PHONY : src/custom_random.cpp.o
+
+src/custom_random.i: src/custom_random.cpp.i
+.PHONY : src/custom_random.i
+
+# target to preprocess a source file
+src/custom_random.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/custom_random.cpp.i
+.PHONY : src/custom_random.cpp.i
+
+src/custom_random.s: src/custom_random.cpp.s
+.PHONY : src/custom_random.s
+
+# target to generate assembly for a file
+src/custom_random.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/custom_random.cpp.s
+.PHONY : src/custom_random.cpp.s
+
 src/entity.o: src/entity.cpp.o
 .PHONY : src/entity.o
 
@@ -393,6 +417,54 @@ src/manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.s
 .PHONY : src/manager.cpp.s
 
+src/mesh.o: src/mesh.cpp.o
+.PHONY : src/mesh.o
+
+# target to build an object file
+src/mesh.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/mesh.cpp.o
+.PHONY : src/mesh.cpp.o
+
+src/mesh.i: src/mesh.cpp.i
+.PHONY : src/mesh.i
+
+# target to preprocess a source file
+src/mesh.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/mesh.cpp.i
+.PHONY : src/mesh.cpp.i
+
+src/mesh.s: src/mesh.cpp.s
+.PHONY : src/mesh.s
+
+# target to generate assembly for a file
+src/mesh.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/mesh.cpp.s
+.PHONY : src/mesh.cpp.s
+
+src/model.o: src/model.cpp.o
+.PHONY : src/model.o
+
+# target to build an object file
+src/model.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/model.cpp.o
+.PHONY : src/model.cpp.o
+
+src/model.i: src/model.cpp.i
+.PHONY : src/model.i
+
+# target to preprocess a source file
+src/model.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/model.cpp.i
+.PHONY : src/model.cpp.i
+
+src/model.s: src/model.cpp.s
+.PHONY : src/model.s
+
+# target to generate assembly for a file
+src/model.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/model.cpp.s
+.PHONY : src/model.cpp.s
+
 src/resource.o: src/resource.cpp.o
 .PHONY : src/resource.o
 
@@ -416,6 +488,30 @@ src/resource.s: src/resource.cpp.s
 src/resource.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.s
 .PHONY : src/resource.cpp.s
+
+src/stb_image.o: src/stb_image.cpp.o
+.PHONY : src/stb_image.o
+
+# target to build an object file
+src/stb_image.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/stb_image.cpp.o
+.PHONY : src/stb_image.cpp.o
+
+src/stb_image.i: src/stb_image.cpp.i
+.PHONY : src/stb_image.i
+
+# target to preprocess a source file
+src/stb_image.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/stb_image.cpp.i
+.PHONY : src/stb_image.cpp.i
+
+src/stb_image.s: src/stb_image.cpp.s
+.PHONY : src/stb_image.s
+
+# target to generate assembly for a file
+src/stb_image.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_omp_sample_program.dir/build.make CMakeFiles/opengl_omp_sample_program.dir/src/stb_image.cpp.s
+.PHONY : src/stb_image.cpp.s
 
 # Help Target
 help:
@@ -444,6 +540,9 @@ help:
 	@echo "... src/creature.o"
 	@echo "... src/creature.i"
 	@echo "... src/creature.s"
+	@echo "... src/custom_random.o"
+	@echo "... src/custom_random.i"
+	@echo "... src/custom_random.s"
 	@echo "... src/entity.o"
 	@echo "... src/entity.i"
 	@echo "... src/entity.s"
@@ -459,9 +558,18 @@ help:
 	@echo "... src/manager.o"
 	@echo "... src/manager.i"
 	@echo "... src/manager.s"
+	@echo "... src/mesh.o"
+	@echo "... src/mesh.i"
+	@echo "... src/mesh.s"
+	@echo "... src/model.o"
+	@echo "... src/model.i"
+	@echo "... src/model.s"
 	@echo "... src/resource.o"
 	@echo "... src/resource.i"
 	@echo "... src/resource.s"
+	@echo "... src/stb_image.o"
+	@echo "... src/stb_image.i"
+	@echo "... src/stb_image.s"
 .PHONY : help
 
 

@@ -34,16 +34,16 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+    // DoneShortList = Clean-up classes /w core_manager, setting up assimp, setting up models pipeline using guide, 
+    //                 Adding basic outpost /w textures, fixed random, generate cleanup for headers, moved old example_multi 
+    //                 files which were used initialy for helping me remember function names in GLFW
 
-// ### (1) Models + textures + lighting for OpenGL
-// ### (2) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
-
-// ### (3) Ballistic throwing setup / talking to eachother
-// ### (4) Increase resolution of the ping sphere
-
-// ### (5) More controlled pings for testing
+// ### (1) Ballistic throwing setup / talking to eachother
+// ### (2) Increase resolution of the ping sphere
+// ### (3) More controlled pings for testing
 // ###  --> Fix issue with ping triggering resources far away
 
-// ### (6) Clean program structure up in general -> removal experimental testing and messy layout + group blocks that are now working correctly
-// ### (7) Write a file read-write system for reading shader files -> cleaner, keep separate
-// ### (8) Ballistic throwing to move found resources / harvest them
+// ### (4) textures + lighting for OpenGL
+// ### (5) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
+
+// ### (6) Write a file read-write system for reading shader files -> cleaner, keep separate

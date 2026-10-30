@@ -1,8 +1,8 @@
-#include <vector>
-#include "graphical_element.h"
-
 #ifndef GE_LINEGRAPH_H
 #define GE_LINEGRAPH_H
+
+#include <vector>
+#include "graphical_element.h"
 
 class GE_Linegraph : public Graphical_Element {
     public:
@@ -49,16 +49,11 @@ class GE_Linegraph : public Graphical_Element {
             "   FragColor = vec4(colour, 1.0f);\n"
             "}\0";
 
-        unsigned int shaderProgram = 0;         // Initialised to 0 to check are being corretcly assigned -> Was getting seg.faults due to this + window context
-        unsigned int vertexShaderID = 0;    // ### THESE GET DELETED ANYWAY SO CAN PROB JUST BE LOCAL TO setup() ###
-        unsigned int fragmentShaderID = 0;  // ###
-        unsigned int VBO = 0;
-        unsigned int VAO = 0;
-        unsigned int EBO = 0;
+        unsigned int shaderProgram;
+        unsigned int VBO;
+        unsigned int VAO;
+        unsigned int EBO;
 
-        // ######
-        // ### CHANGE TO DYNAMIC DRAW IN SETUP AFTER THE STATIC TEST
-        // ######
         float vertex_data[3 +DATA_LIMIT_MAX];
         int vertex_indices[4 +2*(DATA_LIMIT_MAX-1)];
 };

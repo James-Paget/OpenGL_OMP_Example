@@ -1,7 +1,7 @@
-#include "glm/glm.hpp"
-
 #ifndef ENTITY_H
 #define ENTITY_H
+
+#include "glm/glm.hpp"
 
 class Entity {
     public:

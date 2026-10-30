@@ -1,7 +1,7 @@
-#include "graphical_element.h"
-
 #ifndef GE_BAR_H
 #define GE_BAR_H
+
+#include "graphical_element.h"
 
 class GE_Bar : public Graphical_Element {
     public:

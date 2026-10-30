@@ -1,73 +1,97 @@
 [
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/main.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/main.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/gcc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -o CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/stb_image.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/stb_image.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/stb_image.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/stb_image.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/gcc -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -o CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/glad.c",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/glad.c.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/manager.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/manager.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/core_manager.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/core_manager.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/core_manager.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/core_manager.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/hud_manager.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/hud_manager.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/hud_manager.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/hud_manager.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/camera_controls.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/camera_controls.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/entity.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/entity.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/resource.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/resource.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/creature.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/creature.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/mesh.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/mesh.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/mesh.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/mesh.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/model.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/model.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/model.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/model.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/custom_random.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/custom_random.cpp",
+  "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/custom_random.cpp",
+  "output": "CMakeFiles/opengl_omp_sample_program.dir/src/custom_random.cpp.o"
+},
+{
+  "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/graphical_element.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/graphical_element.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_bar.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_bar.cpp.o"
 },
 {
   "directory": "/home/james-paget/Desktop/OpenGL_OMP_Example/build",
-  "command": "/usr/bin/g++  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.cpp",
+  "command": "/usr/bin/g++ -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -g -fopenmp -o CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o -c /home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.cpp",
   "file": "/home/james-paget/Desktop/OpenGL_OMP_Example/src/Graphical_Elements/ge_linegraph.cpp",
   "output": "CMakeFiles/opengl_omp_sample_program.dir/src/Graphical_Elements/ge_linegraph.cpp.o"
 }

@@ -5,9 +5,12 @@ cmake_policy(SET CMP0072 NEW)
 find_package(OpenGL REQUIRED)
 find_package(OpenMP REQUIRED)
 find_package(MPI REQUIRED)
+find_package(assimp REQUIRED)
 
 add_executable(opengl_omp_sample_program 
     src/main.cpp
+    src/stb_image.h
+    src/stb_image.cpp
     src/glad.h
     src/glad.c
     src/manager.h
@@ -24,6 +27,12 @@ add_executable(opengl_omp_sample_program
     src/resource.cpp
     src/creature.h
     src/creature.cpp
+    src/mesh.h
+    src/mesh.cpp
+    src/model.h
+    src/model.cpp
+    src/custom_random.h
+    src/custom_random.cpp
     src/Graphical_Elements/graphical_element.h
     src/Graphical_Elements/graphical_element.cpp
     src/Graphical_Elements/ge_bar.h
@@ -40,4 +49,5 @@ target_link_libraries(opengl_omp_sample_program
     OpenGL::GL
     OpenMP::OpenMP_CXX
     MPI::MPI_CXX
+    assimp::assimp
 )

@@ -1,8 +1,8 @@
-#include "glm/glm.hpp"
-#include "entity.h"
-
 #ifndef RESOURCE_H
 #define RESOURCE_H
+
+#include "glm/glm.hpp"
+#include "entity.h"
 
 class Resource : public Entity {
     public:

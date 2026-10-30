@@ -1,8 +1,8 @@
-#include "glm/glm.hpp"
-#include "entity.h"
-
 #ifndef CREATURE_H
 #define CREATURE_H
+
+#include "glm/glm.hpp"
+#include "entity.h"
 
 class Creature : public Entity {
     public:
