@@ -52,8 +52,8 @@ void refresh_hud(HUD_Manager *_hud_manager, Core_Manager *_core_manager) {
         // Collect data
         // (0)
         float bar_entityId_data[2] = {0,0};
-        for(int i=0; i<_core_manager->creature_number; i++) {
-            switch (_core_manager->creatures[i].id) {
+        for(int i=0; i<_core_manager->creatures.size(); i++) {
+            switch (_core_manager->creatures[i]->id) {
                 case 0:
                     bar_entityId_data[0] = bar_entityId_data[0]+1;
                     break;

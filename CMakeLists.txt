@@ -19,6 +19,8 @@ add_executable(opengl_omp_sample_program
     src/core_manager.cpp
     src/hud_manager.h
     src/hud_manager.cpp
+    src/ping.cpp
+    src/ping.h
     src/camera_controls.h
     src/camera_controls.cpp
     src/entity.h

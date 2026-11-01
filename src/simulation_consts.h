@@ -2,8 +2,10 @@
 #define PING_MAXIMUM 75                     // Max number of pings allowed at once in the simulation
 #define PING_SIGNAL_DECAY_RATE 0.35f        // Speed at which the signal decays over distance
 #define PING_SIGNAL_REMOVE_THRESHOLD 0.1f   // Signal strength minimum before ping is removed from list
+#define PING_MAX_RADIUS 2.0f                // Max radius of a ping
 
 #define TERRAIN_REFLECT_FACTOR 0.8f         // Percentage of perp velocity retained after bounce
+#define DRAG_RATE 0.05f                     // Drag constant
 
 #define CAMERA_MOVE_SPEED 0.025f            // Speed at which the camera can move
 #define CAMERA_ROTATE_SPEED 0.005f          // "" "" rotate

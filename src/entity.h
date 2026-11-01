@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include "glm/glm.hpp"
+#include "simulation_consts.h"
 
 class Entity {
     public:
@@ -23,7 +24,6 @@ class Entity {
 
         void directional_thrust(glm::vec3 udirection, float force);
         void update_dynamics(float delta_t);
-        void ping(float *ping_set, int *ping_counter, float current_time, float strength, float signal);
 
     private:
         //pass

@@ -2,6 +2,7 @@
 #define CORE_MANAGER_H
 
 #include <filesystem>
+#include <omp.h>
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
@@ -11,6 +12,7 @@
 #include "creature.h"
 #include "resource.h"
 #include "model.h"
+#include "ping.h"
 
 class Core_Manager {
     public:
@@ -111,25 +113,9 @@ class Core_Manager {
         unsigned int screen_width;
         unsigned int screen_height;
 
-        static const unsigned int creature_number = 100;
-        static const unsigned int resource_number = 10;
-        Creature creatures[creature_number];
-        Resource resources[resource_number];
-        // ###
-        // ### SWITCH BOTH OF THESE TO VECTOR LISTS FOR VARIABLE ENTITY COUNTS ###
-        // ###
-
-        int ping_number = 0;   // Counts pings as they are added and removed
-        const unsigned int pings_maximum = 6*PING_MAXIMUM;    // E.G 6*X length => X pings max
-        // Pings stored as {
-        //    X_centre, 
-        //    Y_centre, 
-        //    Z_centre, 
-        //    start_time, strength, signal,
-        //       ... REPEATING ...
-        // } to specify the ping center
-        float pings[6*PING_MAXIMUM] = {};   // {} initialisation just to set all values to 0 to start with
-
+        std::vector<Creature*> creatures;
+        std::vector<Resource*> resources;
+        std::vector<Ping*> pings;
 
         unsigned int shaderProgram_entities;
         unsigned int shaderProgram_pingSphere;
@@ -247,8 +233,9 @@ class Core_Manager {
         unsigned int VAO_terrain;   //
         unsigned int EBO_terrain;   //
 
-        void populate_creatures(Creature *creatures, const unsigned int creature_number, float *spawn_dimemsions);
-        void populate_resources(Resource *resources, const unsigned int resource_number, float *spawn_dimemsions);
+        void populate_creatures(float *spawn_dimemsions);
+        void populate_creatures_testing(int scenario, float *spawn_dimemsions);
+        void populate_resources(float *spawn_dimemsions);
 
         int fetch_terrain_vertex_data_size(int x_cells, int z_cells);       // [X,Z,...] point for each vertex (Y given as a uniform)
         int fetch_terrain_vertex_indices_size(int x_cells, int z_cells);    // [I1, I2, I3,...] for each tri (3 indices), 2 tris per square grid, fence post problem for number of squares
@@ -256,13 +243,56 @@ class Core_Manager {
         void generate_terrain_coefficients(glm::mat4 *coefficient_matrix, int seed);
         float terrain_heightmap(float x, float z, glm::mat4 terrain_coefficients);
         void calculate_entities();
-        float fetch_ping_signal_strength(float *pings, int ping_index, float time);
-        float fetch_ping_radius(float *pings, int ping_index, float time);
-        void add_ping(float *pings, int *ping_number, Entity *entity, float strength, float signal, float time);
-        void remove_pings(float *pings, int *ping_number, float time);
-        void evaluate_pings(float *pings, int *ping_number, Creature *creatures, const unsigned int creature_number, Resource *resources, const unsigned int resource_number, float time);
-        void search_entities_spherical(Entity *entities, const unsigned int entity_number, glm::vec3 origin, float search_radius, int *found_entity_indices, int *found_entity_count, int *found_entity_limit, const int THREAD_NUM);
-        void calculate_terrain_collision(Creature *creatures, const unsigned int creature_number, glm::mat4 terrain_coefficients, float terrain_width);
+        float fetch_ping_signal_strength(Ping *ping, float time);
+        float fetch_ping_radius(Ping *ping, float time);
+        void ping_entity(Entity *entity, float strength, int signal, float time);
+        bool add_ping(glm::vec3 position, float strength, int signal, float time);
+        void remove_pings(std::vector<Ping*> *pings, float time);
+        void evaluate_pings(float time);
+        void update_creatures(float time);
+        void calculate_terrain_collision(std::vector<Creature*> creatures, glm::mat4 terrain_coefficients, float terrain_width);
+        
+        template <typename EntityType>
+        void search_entities_spherical(std::vector<EntityType> entities, glm::vec3 origin, float search_radius, std::vector<int> *found_entities, const int THREAD_NUM);
 };
+
+template <typename EntityType>
+void Core_Manager::search_entities_spherical(std::vector<EntityType> entities, glm::vec3 origin, float search_radius, std::vector<int> *found_entities, const int THREAD_NUM) {
+    /*
+    . Looks for entities in a spherical radius
+    . Searches up to max number, then terminates
+
+    . found_entity_limit = Max number of entities to be found before terminating the search
+    */
+    std::vector<int> *thread_found_entities[THREAD_NUM];    // Create a space for each thread to have a pointer to a vector list of found entity indices
+    for(int i=0; i<THREAD_NUM; i++) {
+        thread_found_entities[i] = new std::vector<int>();
+    }
+
+    #pragma omp parallel num_threads(THREAD_NUM)
+    {
+        // Setup thread info
+        int thread_index = omp_get_thread_num();
+        int start_index = thread_index*int(floor(float(entities.size())/float(THREAD_NUM)));
+        int end_index = (thread_index<THREAD_NUM-1) ? (thread_index+1)*int(floor(float(entities.size())/float(THREAD_NUM))) : entities.size();   // NOTE** Ensures last thread covers all remaining entities (after taking floor of divided entity number)
+        
+        // Search thread's subset for relevant data
+        for(int i=start_index; i<end_index; i++) {
+            float separation = sqrt(pow(origin.x-entities[i]->position.x,2) +pow(origin.y-entities[i]->position.y,2) +pow(origin.z-entities[i]->position.z,2));
+            if(separation <= search_radius) {   // If within range
+                (*thread_found_entities[thread_index]).push_back(i);   // Add index in entities to this thread's counter
+            }
+        }
+    }
+    // Gather each thread's data into a single return list
+    for(int i=0; i<THREAD_NUM; i++) {
+        for(int j=0; j<(*thread_found_entities[i]).size(); j++) {
+            found_entities->push_back( (*thread_found_entities[i])[j] );
+        }
+    }
+
+    // Remember to delete the extra memory you set aside for vectors
+    for(int i=0; i<THREAD_NUM;i++) {delete thread_found_entities[i];}
+}
 
 #endif

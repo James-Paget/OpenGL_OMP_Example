@@ -34,16 +34,18 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-    // DoneShortList = Clean-up classes /w core_manager, setting up assimp, setting up models pipeline using guide, 
-    //                 Adding basic outpost /w textures, fixed random, generate cleanup for headers, moved old example_multi 
-    //                 files which were used initialy for helping me remember function names in GLFW
+    // DoneShortList = Added a ping struct for clarity (very little overhead just having a struct, variabels still all inline if wanted), 
+    //                 changed entity lists + ping list to vectors rather than fixed arrays (using pointers + 'new' initialisation HENCE 
+    //                 requires more careful deletion), Add behaviours for idle/chasing/throwing --> need to add catchers + rework ping cooldowns
 
-// ### (1) Ballistic throwing setup / talking to eachother
+                        // Fixing issue with pings not detecting correctly -> Resources had wrong position stored possibly due to conversion 
+                        // from entity lists to actual resource type
+
+
+// ###~(1) Ballistic throwing setup
 // ### (2) Increase resolution of the ping sphere
-// ### (3) More controlled pings for testing
-// ###  --> Fix issue with ping triggering resources far away
 
-// ### (4) textures + lighting for OpenGL
-// ### (5) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
+// ### (3) textures + lighting for OpenGL
+// ### (4) OMP for loading normals for lighting (even-odd lighting pairing issue investigate)
 
-// ### (6) Write a file read-write system for reading shader files -> cleaner, keep separate
+// ### (5) Write a file read-write system for reading shader files -> cleaner, keep separate
